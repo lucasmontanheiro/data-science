@@ -29,3 +29,10 @@
 ### Data Sourcing
 - 01_Web_Scraping
 - 02_Google_Sheets
+
+## References
+
+### Data Sources
+
+- https://statisticalatlas.com/United-States/Overview
+- 
