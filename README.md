@@ -36,3 +36,6 @@
 
 - https://statisticalatlas.com/United-States/Overview
 - 
+
+## Resources
+- [][Linkedin Learning: Python for Data Science - Essencial Training Part 2](https://www.linkedin.com/learning/python-for-data-science-essential-training-part-2/linear-regression?autoplay=true&u=56685617)
