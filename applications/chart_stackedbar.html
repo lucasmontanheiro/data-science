@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100% Stacked Bar Chart</title>
+
+  <!-- Bootstrap CSS -->
+  <link 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    rel="stylesheet">
+
+  <!-- Google Charts Library -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <style>
+    /* Custom Styling */
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #007bff;
+    }
+    #chart_div {
+      width: 100%;
+      height: 500px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Page Content -->
+  <div class="container">
+    <h1>Google Charts - 100% Stacked Bar Chart</h1>
+    <div id="chart_div"></div>
+  </div>
+
+  <!-- Google Charts Script -->
+  <script type="text/javascript">
+    // Load Google Charts
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Function to draw the chart
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Category', 'Product A', 'Product B', 'Product C'],
+        ['January', 20, 50, 30],
+        ['February', 30, 40, 30],
+        ['March', 40, 30, 30],
+        ['April', 50, 20, 30],
+        ['May', 60, 20, 20]
+      ]);
+
+      // Chart Options
+      var options = {
+        title: 'Sales Distribution by Product (100% Stacked)',
+        isStacked: 'percent', // Enable 100% stacking
+        chartArea: { width: '70%', height: '70%' },
+        hAxis: {
+          minValue: 0,
+          format: 'percent',
+          title: 'Percentage'
+        },
+        vAxis: {
+          title: 'Months'
+        },
+        legend: { position: 'top', maxLines: 3 },
+        colors: ['#1b9e77', '#d95f02', '#7570b3']
+      };
+
+      // Draw the chart
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+  </script>
+
+  <!-- Bootstrap JS Bundle (Optional for Further Enhancements) -->
+  <script 
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

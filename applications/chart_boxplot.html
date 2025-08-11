@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Charts Box Plot</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .chart-container {
+            margin-top: 20px;
+        }
+        #box_plot {
+            width: 100%;
+            height: 500px;
+        }
+        #table_div {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Google Charts Box Plot Example</h1>
+    <p>This example demonstrates a box plot and a table generated using Google Charts. The data includes various series and their intervals.</p>
+
+    <!-- Chart Container -->
+    <div id="box_plot"></div>
+    <div id="table_div"></div>
+
+    <script type="text/javascript">
+        // Load Google Charts library with required packages
+        google.charts.load('current', {
+            packages: ['corechart', 'table']
+        }).then(function () {
+            drawBoxPlot();
+            drawTable();
+        });
+
+        // Function to draw the box plot
+        function drawBoxPlot() {
+            const data = google.visualization.arrayToDataTable([
+                [{ label: 'Var', type: 'string' },
+                 { label: 'series0', type: 'number' },
+                 { label: 'series1', type: 'number' },
+                 { label: 'series2', type: 'number' },
+                 { label: 'series3', type: 'number' },
+                 { label: 'series4', type: 'number' },
+                 { label: 'series5', type: 'number' },
+                 { label: 'series6', type: 'number' },
+                 { label: 'Max', id: 'max', type: 'number', role: 'interval' },
+                 { label: 'Min', id: 'min', type: 'number', role: 'interval' },
+                 { label: '1st Q', id: 'firstQuartile', type: 'number', role: 'interval' },
+                 { label: 'Median', id: 'median', type: 'number', role: 'interval' },
+                 { label: '3rd Q', id: 'thirdQuartile', type: 'number', role: 'interval' }],
+                ["a", 100, 90, 110, 85, 96, 104, 120, 120, 85, 93, 100, 107],
+                ["b", 120, 95, 130, 90, 113, 124, 140, 140, 90, 104, 120, 127],
+                ["c", 130, 105, 140, 100, 117, 133, 139, 140, 100, 111, 130, 136],
+                ["d", 90, 85, 95, 85, 88, 92, 95, 95, 85, 86.5, 90, 93.5],
+                ["e", 70, 74, 63, 67, 69, 70, 72, 74, 63, 68, 70, 71],
+                ["f", 30, 39, 22, 21, 28, 34, 40, 40, 21, 25, 30, 36.5],
+                ["g", 80, 77, 83, 70, 77, 85, 90, 90, 70, 77, 80, 84],
+                ["h", 100, 90, 110, 85, 95, 102, 110, 110, 85, 92.5, 100, 106]
+            ]);
+
+            const options = {
+                title: 'Box Plot',
+                height: 500,
+                legend: { position: 'none' },
+                intervals: {
+                    style: 'boxes'
+                }
+            };
+
+            const chart = new google.visualization.LineChart(document.getElementById('box_plot'));
+            chart.draw(data, options);
+        }
+
+        // Function to draw the table
+        function drawTable() {
+            const data = google.visualization.arrayToDataTable([
+                [{ label: 'Var', type: 'string' },
+                 { label: 'Max', id: 'max', type: 'number' },
+                 { label: 'Min', id: 'min', type: 'number' },
+                 { label: '1st Q', id: 'firstQuartile', type: 'number' },
+                 { label: 'Median', id: 'median', type: 'number' },
+                 { label: '3rd Q', id: 'thirdQuartile', type: 'number' }],
+                ["a", 120, 85, 93, 100, 107],
+                ["b", 140, 90, 104, 120, 127],
+                ["c", 140, 100, 111, 130, 136],
+                ["d", 95, 85, 86.5, 90, 93.5],
+                ["e", 74, 63, 68, 70, 71],
+                ["f", 40, 21, 25, 30, 36.5],
+                ["g", 90, 70, 77, 80, 84],
+                ["h", 110, 85, 92.5, 100, 106]
+            ]);
+
+            const table = new google.visualization.Table(document.getElementById('table_div'));
+            table.draw(data, { showRowNumber: true, width: '100%' });
+        }
+    </script>
+</body>
+</html>

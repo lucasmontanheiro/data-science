@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tornado Chart Example</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Charts Library -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <style>
+    /* Custom CSS */
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      margin: 20px 0;
+      text-align: center;
+      color: #007bff;
+    }
+    #tornado_chart {
+      width: 100%;
+      height: 500px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Tornado Chart Visualization</h1>
+    <div id="tornado_chart"></div>
+  </div>
+
+  <!-- Google Charts Script -->
+  <script type="text/javascript">
+    // Load the Visualization API and Bar Chart package
+    google.charts.load('current', { packages: ['bar'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Create the data table
+      var data = google.visualization.arrayToDataTable([
+        ['Category', 'Male', 'Female'], // Header Row
+        ['Category A', 6000, -4500],
+        ['Category B', 8000, -5600],
+        ['Category C', 10000, -7700],
+        ['Category D', 12000, -9100],
+        ['Category E', 5000, -3000]
+      ]);
+
+      // Chart options
+      var options = {
+        title: 'Tornado Chart Example',
+        chartArea: { width: '50%' },
+        hAxis: {
+          title: 'Population',
+          minValue: -12000,
+          maxValue: 12000,
+          format: 'short',
+          gridlines: { color: '#f1f1f1' }
+        },
+        vAxis: {
+          title: 'Categories'
+        },
+        colors: ['#1b9e77', '#d95f02'],
+        bars: 'horizontal', // Required for horizontal bar chart
+        bar: { groupWidth: '80%' },
+        isStacked: true
+      };
+
+      // Draw the chart
+      var chart = new google.charts.Bar(document.getElementById('tornado_chart'));
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+  </script>
+
+  <!-- Bootstrap JS Bundle (Optional for further enhancements) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

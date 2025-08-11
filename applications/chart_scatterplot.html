@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Scatterplot Chart</title>
+    <meta name="description" content="A Google Scatterplot Chart example built for exploratory data analysis (EDA) with instructions on best practices for interpretation.">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for better UI */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .chart-container {
+            margin-top: 50px;
+        }
+        .instructions {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="text-center bg-primary text-white py-4">
+        <h1>Google Scatterplot Chart</h1>
+        <p>A dynamic scatterplot chart example for visualizing data relationships</p>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container chart-container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <!-- Chart Section -->
+                <div id="chart_div" style="width: 100%; height: 500px;"></div>
+
+                <!-- Instructions Section -->
+                <div class="card mt-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="card-title">How to Read This Chart</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="instructions">
+                            <li>Look for <strong>clusters</strong> of points, which may indicate patterns or groupings in the data.</li>
+                            <li>Observe the <strong>spread</strong> of points along the axes to understand variability.</li>
+                            <li>Identify any <strong>outliers</strong>—points that are far from the majority of data.</li>
+                            <li>Analyze the <strong>correlation</strong>: A positive trend suggests an increase in one variable as the other increases, while a negative trend suggests the opposite.</li>
+                            <li>Use the chart to explore relationships and generate hypotheses about the data.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Charts Library -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Load the Google Charts library
+        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Function to draw the scatterplot chart
+        function drawChart() {
+            // Example data for the scatterplot
+            const data = new google.visualization.DataTable();
+            data.addColumn('number', 'X');
+            data.addColumn('number', 'Y');
+            data.addRows([
+                [8, 12], [4, 5.5], [11, 14], [4, 5], [3, 3.5],
+                [6.5, 7], [7, 9], [9, 11], [1, 1.5], [10, 13],
+                [12, 14.5], [13, 17], [5, 6], [6, 7], [7.5, 8.5]
+            ]);
+
+            // Chart options
+            const options = {
+                title: 'Example Scatterplot: Relationship between X and Y',
+                hAxis: { title: 'X Value' },
+                vAxis: { title: 'Y Value' },
+                legend: 'none',
+                colors: ['#007bff']
+            };
+
+            // Draw the chart in the specified div
+            const chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <!-- Embed Prompt (Commented, Not Visible in UI) -->
+    <!-- 
+        Prompt: create a google scatterplot chart. generate an example of the chart and add instructions on how to best read it in a exploratory data analysis. Use html css bootstrap Write it in one file You're an experienced web developer that adds comments to explain all functions and the main parts of your code. This way it's simple for other developers to understand and develop further. Include in the code the application title, description of features and details as well as the prompt used.
+    -->
+</body>
+</html>

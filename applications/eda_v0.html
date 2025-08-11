@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .chart-container {
+            margin: 20px 0;
+        }
+        .chart {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Exploratory Data Analysis (EDA) Dashboard</h1>
+        <p class="text-muted text-center">Interactive visualizations based on year, quarter, and other attributes</p>
+
+        <!-- Chart for Yearly Data -->
+        <div id="chart-year" class="chart-container">
+            <h3>Yearly Data Trends</h3>
+            <div id="year-chart" class="chart"></div>
+        </div>
+
+        <!-- Chart for Quarterly Data -->
+        <div id="chart-quarter" class="chart-container">
+            <h3>Quarterly Data Trends</h3>
+            <div id="quarter-chart" class="chart"></div>
+        </div>
+
+        <!-- Chart for Incident Types -->
+        <div id="chart-incident-types" class="chart-container">
+            <h3>Incident Types Distribution</h3>
+            <div id="incident-types-chart" class="chart"></div>
+        </div>
+
+        <!-- Chart for Regional Distribution -->
+        <div id="chart-regions" class="chart-container">
+            <h3>Regional Data Distribution</h3>
+            <div id="regions-chart" class="chart"></div>
+        </div>
+    </div>
+
+    <script>
+        // Load the Google Charts library
+        google.charts.load('current', { packages: ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            drawYearChart();
+            drawQuarterChart();
+            drawIncidentTypesChart();
+            drawRegionsChart();
+        }
+
+        function drawYearChart() {
+            const data = google.visualization.arrayToDataTable([
+                ['Year', 'Total Crimes', 'Non-Criminal Incidents'],
+                [2009, 506654, 213209],
+                // Add other yearly data here...
+            ]);
+
+            const options = {
+                title: 'Total Crimes and Non-Criminal Incidents by Year',
+                hAxis: { title: 'Year' },
+                vAxis: { title: 'Count' },
+                colors: ['#4285F4', '#FBBC05'],
+                legend: { position: 'top' }
+            };
+
+            const chart = new google.visualization.LineChart(document.getElementById('year-chart'));
+            chart.draw(data, options);
+        }
+
+        function drawQuarterChart() {
+            const data = google.visualization.arrayToDataTable([
+                ['Quarter', 'Total Crimes', 'Non-Criminal Incidents'],
+                ['Q4 2009', 506654, 213209],
+                // Add other quarters here...
+            ]);
+
+            const options = {
+                title: 'Total Crimes and Non-Criminal Incidents by Quarter',
+                hAxis: { title: 'Quarter' },
+                vAxis: { title: 'Count' },
+                colors: ['#34A853', '#EA4335'],
+                legend: { position: 'top' }
+            };
+
+            const chart = new google.visualization.ColumnChart(document.getElementById('quarter-chart'));
+            chart.draw(data, options);
+        }
+
+        function drawIncidentTypesChart() {
+            const data = google.visualization.arrayToDataTable([
+                ['Incident Type', 'Capital', 'Grande SP', 'Interior'],
+                ['Contra a pessoa', 31903, 25695, 104441],
+                ['Contra o patrimonio', 104542, 44738, 129044],
+                ['Entorpecentes', 1632, 1122, 8026],
+                ['Contravencionais', 3712, 3803, 17127],
+                ['Outros criminais', 5607, 4355, 17021],
+                // Add other incident types here...
+            ]);
+
+            const options = {
+                title: 'Distribution of Incident Types Across Regions',
+                hAxis: { title: 'Incident Type' },
+                vAxis: { title: 'Count' },
+                isStacked: true,
+                colors: ['#FF6D01', '#FFCD56', '#4BC0C0'],
+                legend: { position: 'top' }
+            };
+
+            const chart = new google.visualization.BarChart(document.getElementById('incident-types-chart'));
+            chart.draw(data, options);
+        }
+
+        function drawRegionsChart() {
+            const data = google.visualization.arrayToDataTable([
+                ['Region', 'Capital', 'Grande SP', 'Interior'],
+                ['Total de Crimes Violentos', 37675, 1661, 23766],
+                ['Total de delitos', 14825, 80385, 278019],
+                ['Não Criminais', 7282, 37113, 103276],
+                // Add other regions here...
+            ]);
+
+            const options = {
+                title: 'Regional Distribution of Data',
+                hAxis: { title: 'Region' },
+                vAxis: { title: 'Count' },
+                colors: ['#8E24AA', '#D81B60', '#1E88E5'],
+                legend: { position: 'top' }
+            };
+
+            const chart = new google.visualization.ColumnChart(document.getElementById('regions-chart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

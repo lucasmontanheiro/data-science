@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .chart-container {
+            margin: 20px 0;
+        }
+        .chart {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">EDA Dashboard with CSV Source</h1>
+        <p class="text-muted text-center">Visualizations dynamically generated from CSV data</p>
+
+        <div id="charts-container"></div>
+    </div> 
+
+    <script>
+        // Load Google Charts library
+        google.charts.load('current', { packages: ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(initializeDashboard);
+
+        function initializeDashboard() {
+            // Link to your CSV file
+            const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQw0GfhDI_zlvF9D6Yg12J3TgiVATzPce02bZawK8leojxJfzQEP9XdTneuIszc_IsaRXzMC31Gvj9n/pub?gid=955036629&single=true&output=csv'; // Replace with your CSV URL
+
+            // Parse the CSV
+            Papa.parse(csvUrl, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    const data = results.data;
+                    const ocorrenciaValues = [...new Set(data.map(row => row.ocorrencia))].filter(Boolean); // Unique 'ocorrencia' values
+
+                    ocorrenciaValues.forEach(ocorrencia => {
+                        createChartForOcorrencia(data, ocorrencia);
+                    });
+                }
+            });
+        }
+
+        function createChartForOcorrencia(data, ocorrencia) {
+            const filteredData = data.filter(row => row.ocorrencia === ocorrencia);
+
+            // Prepare data for Google Charts
+            const chartData = [['Year-Quarter', 'Capital', 'Grande SP', 'Interior']];
+            filteredData.forEach(row => {
+                chartData.push([
+                    `${row.year} ${row.quarter}`,
+                    parseNumber(row.data_capital),
+                    parseNumber(row.data_grandesp),
+                    parseNumber(row.data_interior)
+                ]);
+            });
+
+            const dataTable = google.visualization.arrayToDataTable(chartData);
+
+            const options = {
+                title: `Occurrences for: ${ocorrencia}`,
+                hAxis: { title: 'Year-Quarter' },
+                vAxis: { title: 'Count' },
+                colors: ['#4285F4', '#FBBC05', '#34A853'],
+                legend: { position: 'top' }
+            };
+
+            const chartContainer = document.createElement('div');
+            chartContainer.classList.add('chart-container');
+            chartContainer.innerHTML = `<h3>${ocorrencia}</h3>`;
+            const chartElement = document.createElement('div');
+            chartElement.classList.add('chart');
+            chartContainer.appendChild(chartElement);
+            document.getElementById('charts-container').appendChild(chartContainer);
+
+            const chart = new google.visualization.ColumnChart(chartElement);
+            chart.draw(dataTable, options);
+        }
+
+        function parseNumber(value) {
+            return value ? parseFloat(value.replace(/,/g, '')) || 0 : 0;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

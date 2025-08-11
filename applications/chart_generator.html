@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chart Generator from CSV</title>
+
+  <!-- Bootstrap CSS for mobile-first responsive design -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Charts Library -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <!-- Custom CSS for styling -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #007bff;
+    }
+    #iframe-container {
+      border-right: 1px solid #ccc;
+      height: 100vh;
+      background-color: #e9ecef;
+    }
+    #charts-container {
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .chart-box {
+      margin-bottom: 30px;
+      background-color: #fff;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Page Title -->
+  <h1>Dynamic Chart Generator</h1>
+
+  <!-- Main Layout -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Left Side: Placeholder Iframe -->
+      <div id="iframe-container" class="col-md-4 d-none d-md-block">
+        <!-- Iframe Placeholder -->
+        <iframe src="https://docs.google.com/spreadsheets/d/1iM7dLrUk-9Tj8-6HUTniraQ2P_m4uAudzU9kLExlhNE/edit?gid=2011165539#gid=2011165539"></iframe>
+      </div>
+
+      <!-- Right Side: Charts -->
+      <div id="charts-container" class="col-12 col-md-8">
+        <!-- Chart Descriptions and Containers -->
+        
+        <div class="chart-box">
+          <h4>Sankey Chart</h4>
+          <p>This chart requires data with categories and numerical values. Example: Category 1, Category 2, Number.</p>
+          <div id="sankey_chart" style="height: 300px;"></div>
+        </div>
+
+        <div class="chart-box">
+          <h4>1. Column Chart (Sales Data Example)</h4>
+          <p>This chart requires data with categories and numerical values. Example: Month, Sales.</p>
+          <div id="column_chart" style="height: 300px;"></div>
+        </div>
+
+        <div class="chart-box">
+          <h4>2. Pie Chart (Market Share Example)</h4>
+          <p>This chart requires data with a label and a percentage/value. Example: Product, Percentage.</p>
+          <div id="pie_chart" style="height: 300px;"></div>
+        </div>
+
+        <div class="chart-box">
+          <h4>3. Line Chart (Performance Over Time)</h4>
+          <p>This chart requires time series data. Example: Date, Performance Value.</p>
+          <div id="line_chart" style="height: 300px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Charts Script -->
+  <script>
+    // Load the Google Charts library and packages
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(loadCSVData);
+
+    // Function to fetch data from CSV and render charts
+    function loadCSVData() {
+      const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRctFoXA1UtFJe4z7SYVhhBqsI9Brsb2Uhajfsz8SdMnAtsiY_wrL8elX0GSxB9I7tBtLfjN2vDAvtC/pub?gid=2011165539&single=true&output=csv'; // Example CSV file
+      
+      fetch(csvUrl)
+        .then(response => response.text())
+        .then(csvText => {
+          const rows = parseCSV(csvText);
+          drawColumnChart(rows);
+          drawPieChart(rows);
+          drawLineChart(rows);
+        })
+        .catch(error => console.error('Error fetching CSV:', error));
+    }
+
+    // Function to parse CSV text into an array of rows
+    function parseCSV(csvText) {
+      const lines = csvText.trim().split('\n');
+      const result = lines.map(line => line.split(','));
+      return result;
+    }
+
+    // Function to draw a Column Chart
+    function drawColumnChart(rows) {
+      const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Category');
+      data.addColumn('number', 'Value');
+      
+      // Extract rows for the column chart
+      rows.slice(1, 6).forEach(row => data.addRow([row[0], parseFloat(row[1])]));
+
+      const options = {
+        title: 'Sales Data Example',
+        chartArea: { width: '80%' },
+        hAxis: { title: 'Category' },
+        vAxis: { title: 'Value' },
+        colors: ['#1b9e77']
+      };
+
+      const chart = new google.visualization.ColumnChart(document.getElementById('column_chart'));
+      chart.draw(data, options);
+    }
+
+    // Function to draw a Pie Chart
+    function drawPieChart(rows) {
+      const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Label');
+      data.addColumn('number', 'Percentage');
+
+      rows.slice(1, 6).forEach(row => data.addRow([row[0], parseFloat(row[1])]));
+
+      const options = {
+        title: 'Market Share Example',
+        pieHole: 0.4,
+        chartArea: { width: '90%', height: '80%' },
+        colors: ['#d95f02', '#7570b3', '#1b9e77', '#e7298a']
+      };
+
+      const chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+      chart.draw(data, options);
+    }
+
+    // Function to draw a Line Chart
+    function drawLineChart(rows) {
+      const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Time');
+      data.addColumn('number', 'Performance');
+
+      rows.slice(1, 6).forEach(row => data.addRow([row[0], parseFloat(row[1])]));
+
+      const options = {
+        title: 'Performance Over Time',
+        chartArea: { width: '80%', height: '70%' },
+        hAxis: { title: 'Time' },
+        vAxis: { title: 'Performance' },
+        colors: ['#7570b3']
+      };
+
+      const chart = new google.visualization.LineChart(document.getElementById('line_chart'));
+      chart.draw(data, options);
+    }
+  </script>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

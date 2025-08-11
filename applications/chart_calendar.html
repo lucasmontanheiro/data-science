@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corinthians Game Calendar</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .chart-container {
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .chart-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Corinthians Game Calendar</h1>
+        <div class="chart-container">
+            <h3 class="chart-title">Calendar of Games: Wins, Losses, and Draws</h3>
+            <div id="calendar-chart"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Load the Google Charts library
+        google.charts.load("current", { packages: ["calendar"] });
+        google.charts.setOnLoadCallback(drawCalendarChart);
+
+        function drawCalendarChart() {
+            // Data (parsed from the CSV for demonstration)
+            const csvData = [
+                ["DATA", "TIME MANDANTE", "PLACAR", "TIME VISITANTE", "ANO"],
+                ["10/9/1910", "UNIÃO LAPA", "1-0", "CORINTHIANS", 1910],
+                ["14/09/1910", "CORINTHIANS", "2-0", "ESTRELA POLAR", 1910],
+                ["27/09/1910", "CORINTHIANS", "5-0", "LAPA (AA)", 1910],
+                ["01/01/1911", "CORINTHIANS", "1-2", "RUGGERONE", 1911],
+                ["01/01/1911", "CORINTHIANS", "1-0", "SANTANNA", 1911],
+                ["01/01/1911", "CORINTHIANS", "1-1", "TIRADENTES", 1911],
+                ["01/01/1911", "CORINTHIANS", "2-1", "CARLOS GOMES", 1911],
+                ["01/01/1911", "CORINTHIANS", "6-0", "RUGGERONE", 1911],
+                ["17/09/1911", "PONTE PRETA", "0-1", "CORINTHIANS", 1911]
+            ];
+
+            // Process data
+            const calendarData = [["Date", "Outcome"]];
+            csvData.slice(1).forEach((row) => {
+                const [date, teamMandante, score, teamVisitante] = row;
+
+                // Parse the score to determine outcome
+                const [scoreMandante, scoreVisitante] = score.split('-').map(Number);
+                let outcome = 0; // Draw
+
+                if (teamMandante === "CORINTHIANS") {
+                    if (scoreMandante > scoreVisitante) outcome = 1; // Win
+                    else if (scoreMandante < scoreVisitante) outcome = -1; // Loss
+                } else if (teamVisitante === "CORINTHIANS") {
+                    if (scoreVisitante > scoreMandante) outcome = 1; // Win
+                    else if (scoreVisitante < scoreMandante) outcome = -1; // Loss
+                }
+
+                // Convert date to "YYYY-MM-DD" format for Google Charts
+                const [day, month, year] = date.split(/[/\-]/).map(Number);
+                const formattedDate = new Date(year, month - 1, day);
+                calendarData.push([formattedDate, outcome]);
+            });
+
+            // Calendar chart options
+            const options = {
+                title: "Corinthians Game Outcomes",
+                height: 350,
+                calendar: {
+                    cellSize: 15,
+                    colorAxis: {
+                        minValue: -1,
+                        maxValue: 1,
+                        colors: ["#dc3545", "#ffc107", "#28a745"], // Loss, Draw, Win
+                    },
+                    dayOfWeekLabel: {
+                        fontName: "Arial",
+                        fontSize: 12
+                    }
+                },
+            };
+
+            // Draw the calendar chart
+            const data = google.visualization.arrayToDataTable(calendarData);
+            const chart = new google.visualization.Calendar(document.getElementById("calendar-chart"));
+            chart.draw(data, options);
+        }
+    </script>
+</body>
+</html>
