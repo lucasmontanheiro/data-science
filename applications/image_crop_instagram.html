@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Image Cropper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 600px; margin-top: 30px; }
+        .img-preview { max-width: 100%; display: block; margin: auto; }
+        .canvas-container { text-align: center; margin-top: 20px; }
+        .download-btn { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container text-center">
+    <h2 class="mb-4">Instagram Image Cropper</h2>
+
+    <input type="file" id="imageInput" accept="image/*" class="form-control mb-3">
+    <button class="btn btn-primary" onclick="processImage()">Crop & Preview</button>
+
+    <div id="previewContainer" class="mt-4" style="display: none;">
+        <h5>Processed Images:</h5>
+
+        <div class="canvas-container">
+            <h6>Square (1080x1080)</h6>
+            <canvas id="canvasSquare"></canvas>
+            <a id="downloadSquare" class="btn btn-success download-btn" download="square.jpg">Download</a>
+        </div>
+
+        <div class="canvas-container">
+            <h6>Portrait (4:5 - 1080x1350)</h6>
+            <canvas id="canvasPortrait"></canvas>
+            <a id="downloadPortrait" class="btn btn-success download-btn" download="portrait.jpg">Download</a>
+        </div>
+
+        <div class="canvas-container">
+            <h6>Story/Reels (1080x1920)</h6>
+            <canvas id="canvasStory"></canvas>
+            <a id="downloadStory" class="btn btn-success download-btn" download="story.jpg">Download</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function processImage() {
+        const input = document.getElementById('imageInput');
+        if (!input.files.length) {
+            alert('Please select an image.');
+            return;
+        }
+
+        const file = input.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            const img = new Image();
+            img.src = event.target.result;
+
+            img.onload = function() {
+                document.getElementById('previewContainer').style.display = 'block';
+
+                cropImage(img, 1080, 1080, 'canvasSquare', 'downloadSquare');
+                cropImage(img, 1080, 1350, 'canvasPortrait', 'downloadPortrait');
+                cropImage(img, 1080, 1920, 'canvasStory', 'downloadStory');
+            };
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    function cropImage(img, targetWidth, targetHeight, canvasId, downloadId) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+
+        // Calculate scale and position to center the image without stretching
+        const imgRatio = img.width / img.height;
+        const targetRatio = targetWidth / targetHeight;
+
+        let newWidth, newHeight, offsetX, offsetY;
+        
+        if (imgRatio > targetRatio) {
+            // Image is wider than target
+            newHeight = targetHeight;
+            newWidth = img.width * (targetHeight / img.height);
+            offsetX = (targetWidth - newWidth) / 2;
+            offsetY = 0;
+        } else {
+            // Image is taller than target
+            newWidth = targetWidth;
+            newHeight = img.height * (targetWidth / img.width);
+            offsetX = 0;
+            offsetY = (targetHeight - newHeight) / 2;
+        }
+
+        // Fill background with grey
+        ctx.fillStyle = "#808080"; // Grey background
+        ctx.fillRect(0, 0, targetWidth, targetHeight);
+
+        // Draw image
+        ctx.drawImage(img, offsetX, offsetY, newWidth, newHeight);
+
+        // Set download link
+        document.getElementById(downloadId).href = canvas.toDataURL("image/jpeg");
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

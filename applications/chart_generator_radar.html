@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free Radar Chart Generator | Compare Multivariate Data Online Instantly</title>
+  <meta name="description" content="Create radar charts online with this free tool. Compare multiple data sets across different categories. Add, edit, and visualize data instantly with no signup.">
+  <meta name="keywords" content="radar chart generator, online spider chart, compare category data, free radar graph tool, interactive radar chart maker, multivariate comparison tool">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/chart_generator_radar">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Interactive Radar Chart Generator - Free Online Tool">
+  <meta property="og:description" content="Visualize performance and comparison data with our editable radar chart tool. Free to use and no login required.">
+  <meta property="og:url" content="https://quickfreewebtools.com/chart_generator_radar">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/radar-chart-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Radar Chart Maker Online">
+  <meta name="twitter:description" content="Create clean radar charts online and compare values across multiple axes. Just enter your data and visualize it instantly.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/radar-chart-preview.png">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<br/>
+    <div class="container">
+        <h2 class="text-center mt-5">Free Radar Chart Generator | Compare Multivariate Data Online Instantly</h2>
+        <p class="lead text-center mt-3">
+        Easily create interactive radar charts online to compare multiple variables across categories. Whether for before-and-after comparisons or performance reviews, our free radar chart generator gives you clear, dynamic visuals in seconds.
+        </p>
+
+
+        <div class="row">
+        <div class="col-12 col-md-6">
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="chartTitle" class="form-label">Chart Title</label>
+                <input type="text" id="chartTitle" class="form-control" value="Category-wise Performance" oninput="updateChart()">
+            </div>
+            <div class="col-md-6 d-flex align-items-end">
+                <button class="btn btn-success w-100" onclick="addRow()">Add Category</button>
+            </div>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Pre Value</th>
+                    <th>Post Value</th>
+                </tr>
+            </thead>
+            <tbody id="dataTable">
+                <tr>
+                    <td><input type="text" class="form-control category" value="Quality"></td>
+                    <td><input type="number" class="form-control preValue" value="60"></td>
+                    <td><input type="number" class="form-control postValue" value="80"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control category" value="Efficiency"></td>
+                    <td><input type="number" class="form-control preValue" value="50"></td>
+                    <td><input type="number" class="form-control postValue" value="75"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control category" value="Accuracy"></td>
+                    <td><input type="number" class="form-control preValue" value="55"></td>
+                    <td><input type="number" class="form-control postValue" value="78"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-12 col-md-6">
+
+        <div class="chart-container">
+            <canvas id="radarChart"></canvas>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    <div class="container mt-5">
+  <h2 class="text-center mb-4">How to Use the Interactive Radar Chart Generator</h2>
+  <p class="lead text-center">
+    This free radar chart tool helps you compare values across multiple axes — great for analyzing skills, performance metrics, and before-and-after improvements.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Step #1: Add Categories and Values</h4>
+      <p>Enter the category names (like “Quality,” “Efficiency,” “Accuracy”) and input two value sets — often used for comparing two states (like “Pre” and “Post”).</p>
+
+      <h4>Step #2: Title Your Chart</h4>
+      <p>Give your radar chart a clear and relevant title. This helps explain what’s being compared and enhances the overall readability of the chart.</p>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Step #3: Add More Categories</h4>
+      <p>Click “Add Category” to expand your chart further. The radar chart redraws live with every edit so you can see results in real time.</p>
+
+      <h4>Step #4: Download or Screenshot</h4>
+      <p>When you're happy with the chart, simply download or screenshot it for use in presentations, dashboards, or reports. No login required!</p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Why Use This Radar Chart Maker?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">🕸️ Easily compare multivariate data on a single chart</li>
+    <li class="list-group-item">⚡ Real-time chart updates as you type</li>
+    <li class="list-group-item">📊 Great for performance comparisons and evaluations</li>
+    <li class="list-group-item">🆓 100% free with no login or watermark</li>
+    <li class="list-group-item">📈 Built with simplicity and speed in mind</li>
+  </ul>
+
+  <p>
+    Radar charts (also called spider or web charts) are perfect for showing how different categories perform relative to one another. Use this free chart generator to visualize your data and highlight improvements or gaps in performance.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/chart_generator_radar" class="btn btn-success btn-lg">Try the Free Radar Chart Tool</a>
+  </p>
+</div>
+
+
+
+
+
+
+
+    <script>
+        let chart;
+
+        function getChartData() {
+            let labels = [];
+            let preValues = [];
+            let postValues = [];
+
+            $('.category').each(function (index) {
+                let category = $(this).val();
+                let preValue = parseFloat($('.preValue').eq(index).val());
+                let postValue = parseFloat($('.postValue').eq(index).val());
+                if (category && !isNaN(preValue) && !isNaN(postValue)) {
+                    labels.push(category);
+                    preValues.push(preValue);
+                    postValues.push(postValue);
+                }
+            });
+
+            return { labels, preValues, postValues };
+        }
+
+        function drawChart() {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            const chartData = getChartData();
+
+            chart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [
+                        {
+                            label: 'Pre',
+                            data: chartData.preValues,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Post',
+                            data: chartData.postValues,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: document.getElementById('chartTitle').value
+                        }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function addRow() {
+            $('#dataTable').append('<tr><td><input type="text" class="form-control category"></td><td><input type="number" class="form-control preValue"></td><td><input type="number" class="form-control postValue"></td></tr>');
+        }
+
+        function updateChart() {
+            drawChart();
+        }
+
+        $(document).on('input', '.category, .preValue, .postValue', updateChart);
+
+        drawChart();
+    </script>
+
+</body>
+</html>

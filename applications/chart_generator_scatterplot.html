@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free Scatter Plot Generator | Interactive XY Graph Maker Online</title>
+  <meta name="description" content="Use this free scatter plot chart generator to visualize data points, identify trends, and explore relationships between variables. Simple, fast, and no login needed.">
+  <meta name="keywords" content="scatter plot generator, free xy chart, interactive scatter plot, online scatter graph tool, XY graph maker, google charts scatter, correlation chart online">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/chart_generator_scatterplot">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Interactive Scatter Plot Generator - Free Online Tool">
+  <meta property="og:description" content="Create XY charts and visualize variable relationships instantly. Input your data and generate a clean, professional scatter plot for free.">
+  <meta property="og:url" content="https://quickfreewebtools.com/chart_generator_scatterplot">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/scatterplot-chart-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Online Scatter Plot Chart Tool">
+  <meta name="twitter:description" content="Easily build and download XY scatter plots with no sign-up. Perfect for scientific data, correlations, and trend analysis.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/scatterplot-chart-preview.png">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .chart-container {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+
+<br/>
+    <div class="container">
+        <h2 class="text-center mt-5">Free Scatter Plot Generator | Interactive XY Graph Maker Online</h2>
+        <p class="lead text-center mt-3">
+  Create interactive scatter plots online for free. Compare X and Y values visually, find data correlations, and download your graph instantly—no software or sign-up required.
+</p>
+
+
+<div class="row mt-4">
+        <div class="col-12 col-md-6">
+
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="xLabel" class="form-label">X-Axis Label</label>
+                <input type="text" id="xLabel" class="form-control" value="X Value">
+            </div>
+            <div class="col-md-4">
+                <label for="yLabel" class="form-label">Y-Axis Label</label>
+                <input type="text" id="yLabel" class="form-control" value="Y Value">
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary mt-4" onclick="drawChart()">Update Chart</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>X Value</th>
+                            <th>Y Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTable">
+                        <tr><td><input type="number" class="form-control xValue" value="10"></td><td><input type="number" class="form-control yValue" value="20"></td></tr>
+                        <tr><td><input type="number" class="form-control xValue" value="20"></td><td><input type="number" class="form-control yValue" value="30"></td></tr>
+                        <tr><td><input type="number" class="form-control xValue" value="30"></td><td><input type="number" class="form-control yValue" value="40"></td></tr>
+                        <tr><td><input type="number" class="form-control xValue" value="40"></td><td><input type="number" class="form-control yValue" value="50"></td></tr>
+                        <tr><td><input type="number" class="form-control xValue" value="50"></td><td><input type="number" class="form-control yValue" value="60"></td></tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-success" onclick="addRow()">Add Row</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="chart-container">
+            <div id="scatterChart"></div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div class="container mt-5">
+  <h2 class="text-center mb-4">How to Use the Interactive Scatter Plot Generator</h2>
+  <p class="lead text-center">
+    This free XY chart maker helps you visualize the relationship between two numerical variables. Ideal for analyzing trends, scientific data, or comparing datasets.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Step #1: Label Your Axes</h4>
+      <p>Enter custom labels for the X-axis and Y-axis to represent what your data points measure. For example, use “Time” and “Sales” or “Age” and “Income.”</p>
+
+      <h4>Step #2: Input Your Data Points</h4>
+      <p>Add your <strong>X and Y values</strong> in pairs. The scatter plot will automatically update to reflect each point’s position on the graph.</p>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Step #3: Add More Rows</h4>
+      <p>Click “Add Row” to input as many data points as needed. This flexibility makes it ideal for academic use, A/B testing results, and more.</p>
+
+      <h4>Step #4: Export or Use Your Chart</h4>
+      <p>Once you’re satisfied, screenshot the chart or download it using browser tools. Great for including in reports, papers, or dashboards.</p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Why Use This Scatter Plot Tool?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">📈 Analyze patterns, correlations, and clusters</li>
+    <li class="list-group-item">⚡ Live chart preview while entering data</li>
+    <li class="list-group-item">🖱️ No account, no watermark, 100% free</li>
+    <li class="list-group-item">🧠 Useful for science, business, education, and analytics</li>
+    <li class="list-group-item">🔍 Supports custom axis labels and unlimited data rows</li>
+  </ul>
+
+  <p>
+    Whether you're visualizing scientific experiments, plotting survey data, or mapping trends over time, this scatter plot chart generator is your go-to free solution.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/chart_generator_scatterplot" class="btn btn-primary btn-lg">Try the Free Scatter Plot Tool</a>
+  </p>
+</div>
+
+
+
+
+
+
+
+    <script>
+        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function getData() {
+            let data = [];
+            $('.xValue').each(function (index) {
+                let x = parseFloat($(this).val());
+                let y = parseFloat($('.yValue').eq(index).val());
+                if (!isNaN(x) && !isNaN(y)) {
+                    data.push([x, y]);
+                }
+            });
+            return data;
+        }
+
+        function drawChart() {
+            let dataArray = [['X', 'Y']].concat(getData());
+            let data = google.visualization.arrayToDataTable(dataArray);
+
+            let options = {
+                title: 'Scatter Plot Example',
+                hAxis: { title: $('#xLabel').val() },
+                vAxis: { title: $('#yLabel').val() },
+                legend: 'none',
+                trendlines: { 0: {} }
+            };
+
+            let chart = new google.visualization.ScatterChart(document.getElementById('scatterChart'));
+            chart.draw(data, options);
+        }
+
+        function addRow() {
+            $('#dataTable').append('<tr><td><input type="number" class="form-control xValue"></td><td><input type="number" class="form-control yValue"></td></tr>');
+        }
+
+        $(document).on('input', '.xValue, .yValue', drawChart);
+    </script>
+</body>
+
+</html>

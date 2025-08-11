@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Text Over Picture Builder - Upload an image, add text, remove text, and download the modified image.">
+  <title>Text Over Picture Builder</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom Styles */
+    body {
+      background-color: #f8f9fa;
+    }
+    .image-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+    }
+    .image-container img {
+      width: 100%;
+      display: block;
+    }
+    .text-overlay {
+      position: absolute;
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: move;
+    }
+    .text-overlay span {
+      cursor: pointer;
+    }
+    .upload-area {
+      border: 2px dashed #6c757d;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background-color 0.3s;
+    }
+    .upload-area:hover {
+      background-color: #e9ecef;
+    }
+    .btn-download {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<br/>
+<div class="container my-4">
+  <!-- Title -->
+  <h1 class="text-center mb-4 mt-5">Text Over Picture Builder</h1>
+  <p class="text-center">Upload an image, click to add text, and download the modified version!</p>
+  
+  <!-- Upload Area -->
+  <div id="upload-area" class="upload-area">
+    <p>Click to upload an image</p>
+    <input type="file" id="image-input" accept="image/*" style="display: none;">
+  </div>
+
+  <!-- Image Container -->
+  <div id="image-container" class="image-container d-none">
+    <img id="uploaded-image" alt="Uploaded Image">
+  </div>
+
+  <!-- Download Button -->
+  <div class="text-center">
+    <button id="download-button" class="btn btn-success btn-download d-none">Download Image</button>
+  </div>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // 🥷 Main script 🥷
+  document.addEventListener("DOMContentLoaded", () => {
+    const uploadArea = document.getElementById("upload-area");
+    const imageInput = document.getElementById("image-input");
+    const imageContainer = document.getElementById("image-container");
+    const uploadedImage = document.getElementById("uploaded-image");
+    const downloadButton = document.getElementById("download-button");
+
+    let currentTextElement = null; // To track currently dragged text element
+
+    // 🧑‍💻 Function: Handle image upload
+    uploadArea.addEventListener("click", () => {
+      imageInput.click();
+    });
+
+    imageInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          uploadedImage.src = e.target.result;
+          imageContainer.classList.remove("d-none");
+          downloadButton.classList.remove("d-none");
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // 🧑‍💻 Function: Add text on click
+    imageContainer.addEventListener("click", (event) => {
+      const rect = imageContainer.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const textElement = document.createElement("div");
+      textElement.className = "text-overlay";
+      textElement.style.left = `${x}px`;
+      textElement.style.top = `${y}px`;
+      textElement.contentEditable = "true";
+      textElement.textContent = "Edit me!";
+      
+      // Double-click to delete text
+      textElement.addEventListener("dblclick", () => {
+        textElement.remove();
+      });
+
+      // Dragging functionality
+      textElement.addEventListener("mousedown", (e) => {
+        currentTextElement = textElement;
+      });
+
+      document.addEventListener("mouseup", () => {
+        currentTextElement = null;
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (currentTextElement) {
+          const containerRect = imageContainer.getBoundingClientRect();
+          currentTextElement.style.left = `${e.clientX - containerRect.left}px`;
+          currentTextElement.style.top = `${e.clientY - containerRect.top}px`;
+        }
+      });
+
+      imageContainer.appendChild(textElement);
+    });
+
+    // 🧑‍💻 Function: Download the modified image
+    downloadButton.addEventListener("click", () => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      const rect = imageContainer.getBoundingClientRect();
+
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+
+      // Draw the uploaded image
+      ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
+
+      // Draw all text elements
+      const textElements = document.querySelectorAll(".text-overlay");
+      textElements.forEach((textElement) => {
+        const x = parseFloat(textElement.style.left);
+        const y = parseFloat(textElement.style.top);
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(textElement.textContent, x, y + 16); // Adjusting y for baseline
+      });
+
+      // Trigger download
+      const link = document.createElement("a");
+      link.download = "modified-image.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  });
+</script>
+
+</body>
+</html>

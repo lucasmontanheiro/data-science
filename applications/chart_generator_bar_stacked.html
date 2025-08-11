@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free 100% Stacked Bar Chart Generator | Editable Online Graph Tool</title>
+  <meta name="description" content="Easily create and edit 100% stacked bar charts online. Input multiple series of data, compare trends over time, and download your chart for presentations or reports. No login needed.">
+  <meta name="keywords" content="100% stacked bar chart generator, editable stacked chart, stacked bar graph maker, online chart builder, Google Charts bar graph, free chart tool">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/stacked-bar-chart-generator">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Editable 100% Stacked Bar Chart Generator">
+  <meta property="og:description" content="Visualize how categories contribute to the whole using our editable online stacked bar chart tool. Input, update, and download with ease.">
+  <meta property="og:url" content="https://quickfreewebtools.com/stacked-bar-chart-generator">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/stacked-bar-chart-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free 100% Stacked Bar Chart Tool">
+  <meta name="twitter:description" content="Build interactive and editable stacked bar charts online using Google Charts. No account needed.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/stacked-bar-chart-preview.png">
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script>
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        let chartData = [
+            ["Month", "Product A", "Product B", "Product C"],
+            ["January", 40, 30, 30],
+            ["February", 35, 25, 40],
+            ["March", 50, 20, 30],
+            ["April", 60, 20, 20],
+            ["May", 70, 15, 15]
+        ];
+
+        function drawChart() {
+            let dataTable = google.visualization.arrayToDataTable(chartData);
+            let options = {
+                title: document.getElementById("chartTitle").value,
+                isStacked: 'percent',
+                hAxis: { title: 'Percentage' },
+                vAxis: { title: 'Months' },
+                chartArea: { width: '70%', height: '70%' }
+            };
+            let chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(dataTable, options);
+        }
+
+        function updateChart() {
+            let newTitle = document.getElementById("chartTitle").value;
+            let productA = document.getElementById("productA").value;
+            let productB = document.getElementById("productB").value;
+            let productC = document.getElementById("productC").value;
+
+            let newData = [["Month", productA, productB, productC]];
+
+            for (let i = 1; i <= 5; i++) {
+                let month = document.getElementById(`month${i}`).value;
+                let a = parseFloat(document.getElementById(`a${i}`).value) || 0;
+                let b = parseFloat(document.getElementById(`b${i}`).value) || 0;
+                let c = parseFloat(document.getElementById(`c${i}`).value) || 0;
+                newData.push([month, a, b, c]);
+            }
+
+            chartData = newData;
+            drawChart();
+        }
+    </script>
+</head>
+<body class="container py-4">
+
+
+
+    <h2 class="text-center mt-5 mb-3">Free 100% Stacked Bar Chart Generator</h2>
+    <p class="lead text-center mt-3">
+  Create clean, professional 100% stacked bar charts online with our free graph maker. Compare data composition across categories and months, update instantly, and download your chart with no signup required.
+</p>
+
+
+
+    <div class="row">
+    <div class="col-12 col-md-6">
+
+    <div class="mb-3">
+        <label for="chartTitle" class="form-label">Chart Title:</label>
+        <input type="text" id="chartTitle" class="form-control" value="Sales Distribution by Product (100% Stacked)" oninput="updateChart()">
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label for="productA" class="form-label">Product A Name:</label>
+            <input type="text" id="productA" class="form-control" value="Product A" oninput="updateChart()">
+        </div>
+        <div class="col-md-4">
+            <label for="productB" class="form-label">Product B Name:</label>
+            <input type="text" id="productB" class="form-control" value="Product B" oninput="updateChart()">
+        </div>
+        <div class="col-md-4">
+            <label for="productC" class="form-label">Product C Name:</label>
+            <input type="text" id="productC" class="form-control" value="Product C" oninput="updateChart()">
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th><span id="labelA">Product A</span> (%)</th>
+                    <th><span id="labelB">Product B</span> (%)</th>
+                    <th><span id="labelC">Product C</span> (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" id="month1" value="January" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="a1" value="40" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="b1" value="30" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="c1" value="30" oninput="updateChart()"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" id="month2" value="February" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="a2" value="35" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="b2" value="25" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="c2" value="40" oninput="updateChart()"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" id="month3" value="March" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="a3" value="50" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="b3" value="20" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="c3" value="30" oninput="updateChart()"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" id="month4" value="April" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="a4" value="60" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="b4" value="20" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="c4" value="20" oninput="updateChart()"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" id="month5" value="May" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="a5" value="70" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="b5" value="15" oninput="updateChart()"></td>
+                    <td><input type="number" class="form-control" id="c5" value="15" oninput="updateChart()"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+    <div class="col-12 col-md-6">
+
+    <div id="chart_div" class="mt-4" style="width: 100%; height: 500px;"></div>
+
+                </div>
+                </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", drawChart);
+    </script>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">How to Create a 100% Stacked Bar Chart Online</h2>
+  <p class="lead text-center">
+    Our free stacked bar chart generator lets you compare how different categories contribute to the whole over time or across groups. It’s ideal for showing proportions in sales, responses, or segments.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Step #1: Add Product Names</h4>
+      <p>Use the top fields to label your data series (e.g., Product A, B, C). These labels will appear in the chart legend and help viewers identify each section.</p>
+
+      <h4>Step #2: Enter Percentage Values</h4>
+      <p>Input percentages for each product or category across time periods like months. The chart automatically stacks the values to reflect their contribution to the total (100%).</p>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Step #3: Title the Chart</h4>
+      <p>Add a custom title that appears above the chart. A clear title improves readability and communicates the story behind your data.</p>
+
+      <h4>Step #4: Export and Use</h4>
+      <p>Once you’ve built your stacked bar chart, download it as an image or use a screenshot to place it in reports, slides, or dashboards.</p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Why Use This Stacked Bar Chart Generator?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">📊 Visualize how data groups make up 100% of a whole</li>
+    <li class="list-group-item">🧩 Compare multiple product lines or data sets over time</li>
+    <li class="list-group-item">⚡ Live chart updates as you edit values</li>
+    <li class="list-group-item">🆓 Completely free with no sign-up or watermark</li>
+    <li class="list-group-item">📈 Powered by Google Charts for accuracy and responsiveness</li>
+  </ul>
+
+  <p>
+    Whether you're tracking product shares, survey distributions, or demographic splits, this 100% stacked bar chart tool makes it easy to create clean, engaging visuals fast.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/stacked-bar-chart-generator" class="btn btn-primary btn-lg">Try the Free Stacked Bar Chart Tool</a>
+  </p>
+</div>
+
+
+
+
+
+</body>
+</html>

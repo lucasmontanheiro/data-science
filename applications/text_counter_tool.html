@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free Advanced Text Counter Tool | Word, Character, Sentence, Emoji & Readability Stats</title>
+  <meta name="description" content="Use our free advanced text counter to instantly calculate word count, character count, sentences, paragraphs, hashtags, reading time, emoji use, and more. No login needed.">
+  <meta name="keywords" content="text counter tool, word counter online, free character count, text analysis tool, sentence counter, emoji counter, hashtag counter, reading time calculator, writing stats tool">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/text_counter_tool">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Advanced Text Counter Tool - Instant Word & Character Stats">
+  <meta property="og:description" content="Analyze your writing instantly. Check word count, reading time, hashtags, and more with our powerful online text counter.">
+  <meta property="og:url" content="https://quickfreewebtools.com/text_counter_tool">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/text-counter-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Word & Text Counter Tool">
+  <meta name="twitter:description" content="Instantly count characters, words, sentences, emojis, hashtags, and even reading time. Free online tool for writers, editors, and marketers.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/text-counter-preview.png">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        textarea { resize: none; height: 200px; }
+        .counter-box { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<br/>
+<div class="container py-5">
+    <h2 class="text-center mb-4 mt-5">Free Advanced Text Counter Tool | Word, Character, Sentence, Emoji & Readability Stats</h2>
+    <p class="lead text-center mt-3">
+  Instantly count words, characters, sentences, emojis, hashtags, reading time, and more with our free advanced text counter tool. Paste your text and get over 20 detailed metrics—perfect for SEO, writing, social media, or editing.
+</p>
+
+
+
+    <div class="row">
+        <!-- Text Input Area -->
+        <div class="col-md-6">
+            <textarea id="text-input" class="form-control" placeholder="Type or paste your text here..." oninput="updateCounters()">
+</textarea>
+        </div>
+
+        <!-- Counters Display -->
+        <div class="col-md-6">
+            <div class="counter-box">
+                <h5>🔢 Text Statistics</h5>
+                <ul class="list-group">
+                    <li class="list-group-item">Words: <span id="word-count">0</span></li>
+                    <li class="list-group-item">Characters: <span id="char-count">0</span></li>
+                    <li class="list-group-item">Characters (No Spaces): <span id="char-no-space">0</span></li>
+                    <li class="list-group-item">Sentences: <span id="sentence-count">0</span></li>
+                    <li class="list-group-item">Paragraphs: <span id="paragraph-count">0</span></li>
+                    <li class="list-group-item">Hashtags (#): <span id="hashtag-count">0</span></li>
+                    <li class="list-group-item">Mentions (@): <span id="mention-count">0</span></li>
+                    <li class="list-group-item">Emojis: <span id="emoji-count">0</span></li>
+                    <li class="list-group-item">Punctuation: <span id="punctuation-count">0</span></li>
+                    <li class="list-group-item">Numbers: <span id="number-count">0</span></li>
+                    <li class="list-group-item">Reading Time: <span id="reading-time">0 sec</span></li>
+                    <li class="list-group-item">Speaking Time: <span id="speaking-time">0 sec</span></li>
+                    <li class="list-group-item">Most Used Word: <span id="most-used-word">N/A</span></li>
+                    <li class="list-group-item">Longest Word: <span id="longest-word">N/A</span></li>
+                    <li class="list-group-item">Shortest Word: <span id="shortest-word">N/A</span></li>
+                    <li class="list-group-item">Line Breaks: <span id="line-breaks">0</span></li>
+                    <li class="list-group-item">Whitespace: <span id="whitespace-count">0</span></li>
+                    <li class="list-group-item">Uppercase Letters: <span id="uppercase-count">0</span></li>
+                    <li class="list-group-item">Lowercase Letters: <span id="lowercase-count">0</span></li>
+                    <li class="list-group-item">Unique Words: <span id="unique-words">0</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Why Use Our Advanced Text Counter Tool?</h2>
+  <p class="lead text-center">
+    Whether you're writing blog posts, tweets, academic papers, SEO content, or social media captions—this tool gives you instant insights into your text’s structure and performance.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Real-Time Metrics</h4>
+      <p>Paste your text and get live statistics including:</p>
+      <ul>
+        <li>☐ Words and character count (with or without spaces)</li>
+        <li>☐ Sentence and paragraph count</li>
+        <li>☐ Reading and speaking time</li>
+        <li>☐ Most used word, longest and shortest word</li>
+        <li>☐ Hashtags, mentions, and emoji detection</li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Perfect For:</h4>
+      <ul>
+        <li>💭 Writers and bloggers checking readability</li>
+        <li>📲 Social media creators staying within limits</li>
+        <li>�쎩 Students analyzing assignment structure</li>
+        <li>💼 SEO specialists optimizing content length and keyword usage</li>
+        <li>🦰 Anyone who wants to understand their text better</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">What Makes This Text Counter Different?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">⚡ Instant stats—no submit button needed</li>
+    <li class="list-group-item">🧠 Tracks hashtags, mentions, punctuation, emojis</li>
+    <li class="list-group-item">📊 Built-in reading and speaking time calculator</li>
+    <li class="list-group-item">🌐 Tracks uppercase/lowercase and unique words</li>
+    <li class="list-group-item">🌐 100% free and privacy-safe—no saving or logging</li>
+  </ul>
+
+  <p>
+    Whether you're optimizing tweets, checking copy for SEO, or cleaning up your next blog post, this free text analyzer tool gives you the insights you need, fast.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/text_counter_tool" class="btn btn-primary btn-lg">Start Counting Your Text Now</a>
+  </p>
+</div>
+
+
+
+<script>
+function updateCounters() {
+    let text = document.getElementById("text-input").value;
+
+    // Word count
+    let words = text.match(/\b\w+\b/g) || [];
+    document.getElementById("word-count").textContent = words.length;
+
+    // Character count
+    document.getElementById("char-count").textContent = text.length;
+
+    // Characters (No Spaces)
+    document.getElementById("char-no-space").textContent = text.replace(/\s/g, "").length;
+
+    // Sentence count
+    document.getElementById("sentence-count").textContent = (text.match(/[.!?]+/g) || []).length;
+
+    // Paragraph count
+    document.getElementById("paragraph-count").textContent = (text.match(/\n+/g) || []).length + 1;
+
+    // Hashtag count
+    document.getElementById("hashtag-count").textContent = (text.match(/#/g) || []).length;
+
+    // Mention count
+    document.getElementById("mention-count").textContent = (text.match(/@/g) || []).length;
+
+    // Emoji count (basic)
+    document.getElementById("emoji-count").textContent = (text.match(/[F600}-F64F]/gu) || []).length;
+
+    // Punctuation count
+    document.getElementById("punctuation-count").textContent = (text.match(/[.,!?;:]/g) || []).length;
+
+    // Number count
+    document.getElementById("number-count").textContent = (text.match(/\d/g) || []).length;
+
+    // Reading Time (Assuming 200 words/min)
+    document.getElementById("reading-time").textContent = (words.length / 200 * 60).toFixed(1) + " sec";
+
+    // Speaking Time (Assuming 150 words/min)
+    document.getElementById("speaking-time").textContent = (words.length / 150 * 60).toFixed(1) + " sec";
+
+    // Most Used Word
+    let wordFrequency = {};
+    words.forEach(word => { wordFrequency[word] = (wordFrequency[word] || 0) + 1; });
+    let mostUsed = Object.entries(wordFrequency).sort((a, b) => b[1] - a[1])[0];
+    document.getElementById("most-used-word").textContent = mostUsed ? mostUsed[0] : "N/A";
+
+    // Longest & Shortest Words
+    let sortedWords = [...words].sort((a, b) => b.length - a.length);
+    document.getElementById("longest-word").textContent = sortedWords[0] || "N/A";
+    document.getElementById("shortest-word").textContent = sortedWords[sortedWords.length - 1] || "N/A";
+
+    // Line Breaks & Whitespace
+    document.getElementById("line-breaks").textContent = (text.match(/\n/g) || []).length;
+    document.getElementById("whitespace-count").textContent = (text.match(/\s/g) || []).length;
+
+    // Uppercase & Lowercase letters
+    document.getElementById("uppercase-count").textContent = (text.match(/[A-Z]/g) || []).length;
+    document.getElementById("lowercase-count").textContent = (text.match(/[a-z]/g) || []).length;
+
+    // Unique Words
+    document.getElementById("unique-words").textContent = new Set(words).size;
+}
+</script>
+
+</body>
+</html>

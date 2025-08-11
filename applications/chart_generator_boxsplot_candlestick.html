@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free Candlestick Chart Generator | Editable Stock Chart Tool Online</title>
+  <meta name="description" content="Create professional candlestick charts online using our free and editable chart tool. Enter open, close, high, and low data to visualize market trends with no sign-up.">
+  <meta name="keywords" content="candlestick chart generator, editable candlestick graph, stock chart builder, free financial chart tool, online OHLC chart, min max open close chart, google charts candlestick">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/chart_generator_boxsplot_candlestick">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Editable Candlestick Chart Generator - Free Online Tool">
+  <meta property="og:description" content="Track stock data visually with our editable candlestick chart generator. Input open, close, min, and max values to visualize trends easily.">
+  <meta property="og:url" content="https://quickfreewebtools.com/chart_generator_boxsplot_candlestick">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/candlestick-chart-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Online Candlestick Chart Generator">
+  <meta name="twitter:description" content="Visualize stock and financial data easily using our free, editable candlestick chart tool. Built with Google Charts.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/candlestick-chart-preview.png">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center my-4 mt-5">Free Candlestick Chart Generator | Editable Stock Chart Tool Online</h2>
+    <p class="lead text-center mt-3">
+    Build custom candlestick charts online in seconds with our free stock chart generator. Perfect for tracking market trends, comparing opening and closing prices, and visualizing high/low values—no login or software needed.
+    </p>
+
+    
+    <div class="chart-container p-4 mb-4">
+        <div class="mb-3">
+            <label for="chartTitle" class="form-label">Chart Title:</label>
+            <input type="text" class="form-control" id="chartTitle" value="Stock Market Trends">
+        </div>
+        <div class="row g-2">
+            <div class="col-md-3">
+                <label for="col1" class="form-label">Column 1:</label>
+                <input type="text" class="form-control" id="col1" value="Day">
+            </div>
+            <div class="col-md-3">
+                <label for="col2" class="form-label">Column 2:</label>
+                <input type="text" class="form-control" id="col2" value="Min">
+            </div>
+            <div class="col-md-3">
+                <label for="col3" class="form-label">Column 3:</label>
+                <input type="text" class="form-control" id="col3" value="Open">
+            </div>
+            <div class="col-md-3">
+                <label for="col4" class="form-label">Column 4:</label>
+                <input type="text" class="form-control" id="col4" value="Close">
+            </div>
+        </div>
+        
+        <table class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Min</th>
+                    <th>Open</th>
+                    <th>Close</th>
+                    <th>Max</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="dataTable">
+                <tr>
+                    <td><input type="text" class="form-control" value="Mon"></td>
+                    <td><input type="number" class="form-control" value="20"></td>
+                    <td><input type="number" class="form-control" value="28"></td>
+                    <td><input type="number" class="form-control" value="38"></td>
+                    <td><input type="number" class="form-control" value="45"></td>
+                    <td><button class="btn btn-danger btn-sm removeRow">Remove</button></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" value="Tue"></td>
+                    <td><input type="number" class="form-control" value="31"></td>
+                    <td><input type="number" class="form-control" value="38"></td>
+                    <td><input type="number" class="form-control" value="55"></td>
+                    <td><input type="number" class="form-control" value="66"></td>
+                    <td><button class="btn btn-danger btn-sm removeRow">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn btn-primary" id="addRow">Add Row</button>
+    </div>
+    
+    <div class="chart-container">
+        <div id="candlestick_chart" style="height: 400px;"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">How to Use the Editable Candlestick Chart Generator</h2>
+  <p class="lead text-center">
+    This tool is built for traders, analysts, students, and anyone needing to create a fast, visual breakdown of market behavior. Just enter your open, high, low, and close data—and your chart updates instantly.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Step #1: Label Your Columns</h4>
+      <p>Use the input fields at the top to customize column labels like "Day," "Open," "Close," etc. These appear directly in your chart and table below.</p>
+
+      <h4>Step #2: Input Your Data</h4>
+      <p>For each row, enter the <strong>min, open, close, and max</strong> values for a specific time period or data point. Add or remove rows as needed to fit your dataset.</p>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Step #3: Title Your Chart</h4>
+      <p>Give your candlestick chart a clear title—this will be displayed above the chart and help explain what the data represents (e.g., “Stock Market Trends”).</p>
+
+      <h4>Step #4: Export or Screenshot</h4>
+      <p>Once your chart is built, use a browser screenshot or tool to export the chart and insert it into reports, presentations, or financial dashboards.</p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Why Use This Candlestick Chart Generator?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">📉 Visualize open-high-low-close (OHLC) data quickly</li>
+    <li class="list-group-item">💹 Perfect for stock market and trading trend analysis</li>
+    <li class="list-group-item">🧮 Input multiple rows and live preview your chart</li>
+    <li class="list-group-item">🖥️ Free to use, no software or login required</li>
+    <li class="list-group-item">📊 Built using Google Charts for reliability and speed</li>
+  </ul>
+
+  <p>
+    Whether you’re showcasing stock performance, crypto values, or commodities, this tool helps you create professional candlestick charts that are easy to understand and share.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/chart_generator_boxsplot_candlestick" class="btn btn-primary btn-lg">Try the Free Candlestick Chart Tool</a>
+  </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        let title = $('#chartTitle').val();
+        let col1 = $('#col1').val();
+        let col2 = $('#col2').val();
+        let col3 = $('#col3').val();
+        let col4 = $('#col4').val();
+
+        let data = new google.visualization.DataTable();
+        data.addColumn('string', col1);
+        data.addColumn('number', col2);
+        data.addColumn('number', col3);
+        data.addColumn('number', col4);
+        data.addColumn('number', 'Max');
+
+        let tableData = [];
+        $('#dataTable tr').each(function() {
+            let row = [];
+            $(this).find('td input').each(function() {
+                let value = $(this).val();
+                row.push(isNaN(value) ? value : Number(value));
+            });
+            tableData.push(row);
+        });
+
+        data.addRows(tableData);
+
+        let options = {
+            title: title,
+            legend: 'none',
+            height: 400,
+            chartArea: {width: '80%', height: '70%'}
+        };
+
+        let chart = new google.visualization.CandlestickChart(document.getElementById('candlestick_chart'));
+        chart.draw(data, options);
+    }
+
+    $(document).on('input', 'input', drawChart);
+
+    // Add new row
+    $('#addRow').click(function() {
+        let newRow = `
+            <tr>
+                <td><input type="text" class="form-control" value="New Day"></td>
+                <td><input type="number" class="form-control" value="10"></td>
+                <td><input type="number" class="form-control" value="15"></td>
+                <td><input type="number" class="form-control" value="25"></td>
+                <td><input type="number" class="form-control" value="30"></td>
+                <td><button class="btn btn-danger btn-sm removeRow">Remove</button></td>
+            </tr>
+        `;
+        $('#dataTable').append(newRow);
+        drawChart();
+    });
+
+    // Remove row
+    $(document).on('click', '.removeRow', function() {
+        $(this).closest('tr').remove();
+        drawChart();
+    });
+</script>
+
+</body>
+</html>

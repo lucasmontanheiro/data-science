@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free Timeline Chart Generator | Visualize Events & Milestones Online</title>
+  <meta name="description" content="Easily generate timeline charts online with our free editable tool. Add events, dates, and categories to visualize historical data, project phases, or story timelines. No signup required.">
+  <meta name="keywords" content="timeline chart generator, free timeline tool, editable timeline graph, visualize events on timeline, online timeline creator, Google timeline chart maker, project timeline visual">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/chart_generator_timeline">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Editable Timeline Chart Generator - Free Online Tool">
+  <meta property="og:description" content="Create historical timelines or project visuals in seconds using this free, editable Google Timeline Chart generator.">
+  <meta property="og:url" content="https://quickfreewebtools.com/chart_generator_timeline">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/timeline-chart-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Online Timeline Chart Generator">
+  <meta name="twitter:description" content="Build and edit timeline charts with start/end dates and labels. Perfect for historical events, education, and planning.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/timeline-chart-preview.png">
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["timeline"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var container = document.getElementById("timeline");
+            var chart = new google.visualization.Timeline(container);
+            var dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({ type: "string", id: "Position" });
+            dataTable.addColumn({ type: "string", id: "Name" });
+            dataTable.addColumn({ type: "date", id: "Start" });
+            dataTable.addColumn({ type: "date", id: "End" });
+
+            // Load initial data
+            updateChart(chart, dataTable);
+        }
+
+        function updateChart(chart, dataTable) {
+            dataTable.removeRows(0, dataTable.getNumberOfRows());
+
+            $(".data-row").each(function () {
+                var position = $(this).find(".position").val();
+                var name = $(this).find(".name").val();
+                var start = new Date($(this).find(".start").val());
+                var end = new Date($(this).find(".end").val());
+
+                if (position && name && !isNaN(start) && !isNaN(end)) {
+                    dataTable.addRow([position, name, start, end]);
+                }
+            });
+
+            chart.draw(dataTable);
+        }
+
+        $(document).ready(function () {
+            $("#addRow").click(function () {
+                $("#data-rows").append(`
+                    <div class="row data-row mb-2">
+                        <div class="col-md-3">
+                            <input type="text" class="form-control position" placeholder="Position">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control name" placeholder="Name">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="date" class="form-control start">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="date" class="form-control end">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-danger removeRow">Remove</button>
+                        </div>
+                    </div>
+                `);
+            });
+
+            $(document).on("click", ".removeRow", function () {
+                $(this).closest(".data-row").remove();
+            });
+
+            $(document).on("input change", ".data-row input", function () {
+                var chart = new google.visualization.Timeline(document.getElementById("timeline"));
+                var dataTable = new google.visualization.DataTable();
+                dataTable.addColumn({ type: "string", id: "Position" });
+                dataTable.addColumn({ type: "string", id: "Name" });
+                dataTable.addColumn({ type: "date", id: "Start" });
+                dataTable.addColumn({ type: "date", id: "End" });
+
+                updateChart(chart, dataTable);
+            });
+        });
+    </script>
+</head>
+<body class="container py-4">
+
+<br/>
+    <h2 class="text-center mb-4 mt-5">Free Timeline Chart Generator | Visualize Events & Milestones Online</h2>
+    <p class="lead text-center mt-3">
+  Create clean, interactive timeline charts online with our free timeline generator. Enter events, set start and end dates, and visualize them on a horizontal time scale—ideal for history, education, projects, and more.
+</p>
+
+
+    <div id="timeline" style="height: 300px;"></div>
+
+    <h4 class="mt-4">Edit Data</h4>
+    <div id="data-rows">
+        <div class="row data-row mb-2">
+            <div class="col-md-3">
+                <input type="text" class="form-control position" placeholder="Position" value="President">
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control name" placeholder="Name" value="George Washington">
+            </div>
+            <div class="col-md-2">
+                <input type="date" class="form-control start" value="1789-04-30">
+            </div>
+            <div class="col-md-2">
+                <input type="date" class="form-control end" value="1797-03-04">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger removeRow">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="addRow" class="btn btn-primary mt-3">Add Row</button>
+
+
+    <div class="container mt-5">
+  <h2 class="text-center mb-4">How to Use the Timeline Chart Generator</h2>
+  <p class="lead text-center">
+    Our timeline generator helps you display a sequence of events visually. Whether you’re building a historical timeline, tracking leadership changes, or showcasing a project plan, this tool makes it simple.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Step #1: Label Your Rows</h4>
+      <p>Use the left-hand text field to categorize your timeline events—for example, “President,” “Era,” “Project Phase,” or “Milestone.”</p>
+
+      <h4>Step #2: Add Start & End Dates</h4>
+      <p>Input the exact start and end dates for each event. These are used to place the bars correctly along the timeline’s horizontal axis.</p>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Step #3: Add More Rows</h4>
+      <p>Click “Add Row” to add as many events as needed. You can build a complete historical record, leadership succession, or project breakdown with ease.</p>
+
+      <h4>Step #4: Export or Screenshot</h4>
+      <p>Once your timeline chart is ready, screenshot or export it to include in presentations, educational materials, or planning documents.</p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Why Use This Timeline Chart Tool?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">📅 Perfect for history timelines, projects, biographies, and planning</li>
+    <li class="list-group-item">📊 Visualize time spans clearly with labeled bars</li>
+    <li class="list-group-item">⚡ Instantly editable and updated live</li>
+    <li class="list-group-item">🆓 Completely free and browser-based</li>
+    <li class="list-group-item">💡 Simple UI—no account, no watermark</li>
+  </ul>
+
+  <p>
+    Whether you’re charting U.S. presidents, company CEOs, product launches, or eras in history, this timeline chart tool provides a clear and flexible way to display your data.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/chart_generator_timeline" class="btn btn-primary btn-lg">Create Your Free Timeline Chart</a>
+  </p>
+</div>
+
+
+
+
+
+</body>
+</html>

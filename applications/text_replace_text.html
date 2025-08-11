@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free Text Replace & Format Tool | Clean, Convert, and Transform Text Online</title>
+  <meta name="description" content="Use our free online text replace tool to replace characters, fix formatting, trim spaces, convert between formats like CamelCase, PascalCase, and more. Copy or download your modified text instantly.">
+  <meta name="keywords" content="text replace tool, online text formatter, replace newlines, replace tabs, snake_case to PascalCase, trim whitespaces, remove extra spaces, convert text format, fix obfuscated emails, free string editor">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/text_replace_text">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Online Text Replacement Tool - Format & Clean Text">
+  <meta property="og:description" content="Replace characters, remove whitespace, and transform string formats with this free text editing tool. No sign-up required.">
+  <meta property="og:url" content="https://quickfreewebtools.com/text_replace_text">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/text-replace-tool-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Text Format & Replace Tool">
+  <meta name="twitter:description" content="Convert, clean, and reformat your text online. Replace spaces, newlines, dashes, tabs, and more with this powerful free tool.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/text-replace-tool-preview.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 900px;
+        }
+        textarea {
+            height: 250px;
+        }
+        .btn-group-vertical button {
+            text-align: left;
+        }
+        .output-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 250px;
+            background-color: white;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+<br/>
+<div class="container">
+    <h2 class="text-center mb-4 mt-5">Free Text Replace & Format Tool | Clean, Convert, and Transform Text Online</h2>
+    <p class="lead text-center mt-3">
+  Easily replace characters, remove line breaks, convert formats, and clean your text in seconds. This free online text replace tool lets you transform, reformat, and copy your output instantly.
+</p>
+
+
+
+    <div class="row">
+        <!-- Text Input -->
+        <div class="col-md-4">
+            <label for="inputText" class="form-label">Enter Text:</label>
+            <textarea id="inputText" class="form-control" placeholder="Paste your text here..."></textarea>
+        </div>
+
+        <!-- Buttons for common replacements -->
+        <div class="col-md-4 text-center">
+            <label class="form-label">Replace With:</label>
+            <div class="btn-group-vertical w-100">
+                <button class="btn btn-primary btn-sm" onclick="replaceText(';', ',')">Replace ';' with ','</button>
+                <button class="btn btn-secondary btn-sm" onclick="replaceMultipleSpaces()">Remove extra spaces</button>
+                <button class="btn btn-info btn-sm" onclick="replaceNewLinesWithCommas()">New lines → commas</button>
+                <button class="btn btn-warning btn-sm" onclick="replaceText('\t', ' ')">Replace tabs with spaces</button>
+                <button class="btn btn-danger btn-sm" onclick="replaceText('_', ' ')">Underscores → spaces</button>
+                <button class="btn btn-success btn-sm" onclick="replaceText('-', ' ')">Dashes → spaces</button>
+                <button class="btn btn-dark btn-sm" onclick="camelToSpaces()">CamelCase → spaces</button>
+                <button class="btn btn-primary btn-sm" onclick="snakeToPascal()">snake_case → PascalCase</button>
+                <button class="btn btn-secondary btn-sm" onclick="emailObfuscationFix()">Fix obfuscated emails</button>
+                <button class="btn btn-info btn-sm" onclick="removeWhitespace()">Trim extra whitespaces</button>
+            </div>
+        </div>
+
+        <!-- Output Box -->
+        <div class="col-md-4">
+            <label for="outputText" class="form-label">Modified Text:</label>
+            <div id="outputText" class="output-box"></div>
+            <button class="btn btn-outline-primary mt-2" onclick="copyToClipboard()">Copy</button>
+            <form method="post">
+                <input type="hidden" id="finalText" name="final_text">
+                <button type="submit" class="btn btn-outline-success mt-2" onclick="prepareDownload()">Download</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">How to Use the Text Replace Tool</h2>
+  <p class="lead text-center">
+    This free utility helps you clean, reformat, and convert text with one click. Perfect for coders, writers, editors, and anyone working with structured or messy text data.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Step #1: Paste Your Text</h4>
+      <p>Drop your string, list, paragraph, or block of code into the input box. You can paste anything—CSV, JSON, markdown, or plain text.</p>
+
+      <h4>Step #2: Choose a Replacement Rule</h4>
+      <p>Click on any transformation rule, such as:</p>
+      <ul>
+        <li>🔁 Replace <code>;</code> with <code>,</code></li>
+        <li>⬇️ Convert newlines to commas</li>
+        <li>🐫 Convert CamelCase to spaces</li>
+        <li>🐍 Convert <code>snake_case</code> to <code>PascalCase</code></li>
+        <li>🧼 Remove extra spaces or trim all whitespace</li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Step #3: Get Your Modified Text</h4>
+      <p>After applying a rule, your output appears instantly in the <strong>Modified Text</strong> box. You can then:</p>
+      <ul>
+        <li>📋 Copy the result to your clipboard</li>
+        <li>📥 Download it as a .txt file</li>
+        <li>🔄 Apply more transformations</li>
+      </ul>
+
+      <h4>Step #4: Use It Anywhere</h4>
+      <p>Use the cleaned text in emails, databases, blog posts, or spreadsheets. It’s fast, simple, and designed for bulk formatting jobs.</p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Why Use This Text Replacement Tool?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">🛠️ Fix line breaks, obfuscated emails, and messy strings</li>
+    <li class="list-group-item">📐 Convert naming styles: CamelCase, PascalCase, snake_case</li>
+    <li class="list-group-item">⚡ Works instantly—no refresh, no loading</li>
+    <li class="list-group-item">🆓 100% free and privacy-safe</li>
+    <li class="list-group-item">💻 Great for developers, writers, editors, and students</li>
+  </ul>
+
+  <p>
+    Whether you're preparing code snippets, editing CSV data, or reformatting social posts, this tool makes it fast and frictionless to structure your text the way you need it.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/text_replace_text" class="btn btn-primary btn-lg">Try the Free Text Replace Tool Now</a>
+  </p>
+</div>
+
+
+
+
+<script>
+    function replaceText(find, replace) {
+        let text = document.getElementById("inputText").value;
+        let regex = new RegExp(find, 'g');
+        let result = text.replace(regex, replace);
+        document.getElementById("outputText").innerText = result;
+    }
+
+    function replaceMultipleSpaces() {
+        let text = document.getElementById("inputText").value;
+        let result = text.replace(/\s+/g, ' ');
+        document.getElementById("outputText").innerText = result;
+    }
+
+    function replaceNewLinesWithCommas() {
+        let text = document.getElementById("inputText").value;
+        let result = text.replace(/\n+/g, ', ');
+        document.getElementById("outputText").innerText = result;
+    }
+
+    function removeWhitespace() {
+        let text = document.getElementById("inputText").value;
+        let result = text.trim();
+        document.getElementById("outputText").innerText = result;
+    }
+
+    function camelToSpaces() {
+        let text = document.getElementById("inputText").value;
+        let result = text.replace(/([a-z])([A-Z])/g, '$1 $2');
+        document.getElementById("outputText").innerText = result;
+    }
+
+    function snakeToPascal() {
+        let text = document.getElementById("inputText").value;
+        let result = text.replace(/(_\w)/g, match => match[1].toUpperCase());
+        result = result.charAt(0).toUpperCase() + result.slice(1);
+        document.getElementById("outputText").innerText = result;
+    }
+
+    function emailObfuscationFix() {
+        let text = document.getElementById("inputText").value;
+        let result = text.replace(/\ \[at\] /g, '@').replace(/\ \[dot\] /g, '.');
+        document.getElementById("outputText").innerText = result;
+    }
+
+    function copyToClipboard() {
+        let outputText = document.getElementById("outputText").innerText;
+        navigator.clipboard.writeText(outputText).then(() => alert("Copied to clipboard!"));
+    }
+
+    function prepareDownload() {
+        let outputText = document.getElementById("outputText").innerText;
+        document.getElementById("finalText").value = outputText;
+    }
+</script>
+
+</body>
+</html>

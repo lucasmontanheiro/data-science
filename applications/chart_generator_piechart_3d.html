@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free 3D Pie Chart Generator | Editable Online Graph Maker Tool</title>
+  <meta name="description" content="Create 3D pie charts online using our free editable chart maker. Add categories and values, and instantly generate a beautiful, interactive chart. No login needed.">
+  <meta name="keywords" content="3D pie chart generator, editable pie chart, free online chart tool, interactive graph maker, 3D chart builder, make pie chart online, data visualization tool">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/chart_generator_piechart_3d">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Editable 3D Pie Chart Generator - Free Online Tool">
+  <meta property="og:description" content="Build interactive and editable 3D pie charts in seconds. No signup. Just input your data and download or present.">
+  <meta property="og:url" content="https://quickfreewebtools.com/chart_generator_piechart_3d">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/3d-pie-chart-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Editable 3D Pie Chart Tool">
+  <meta name="twitter:description" content="Create and customize 3D pie charts online with zero effort. Input, visualize, export—done.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/3d-pie-chart-preview.png">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        let chartData = [
+            ['Language', 'Speakers (in millions)'],
+            ['Hindi', 500],
+            ['Bengali', 200],
+            ['Telugu', 150],
+            ['Marathi', 120],
+            ['Tamil', 100]
+        ];
+
+        function drawChart() {
+            let data = google.visualization.arrayToDataTable(chartData);
+
+            let options = {
+                title: document.getElementById("chartTitle").value,
+                is3D: true,
+                slices: { 0: { offset: 0.2 } }
+            };
+
+            let chart = new google.visualization.PieChart(document.getElementById("chart_div"));
+            chart.draw(data, options);
+        }
+
+        function updateData() {
+            chartData = [];
+            let rows = document.querySelectorAll(".data-row");
+            chartData.push(['Language', 'Speakers']);
+
+            rows.forEach(row => {
+                let label = row.querySelector(".label").value;
+                let value = parseFloat(row.querySelector(".value").value) || 0;
+                if (label) chartData.push([label, value]);
+            });
+
+            drawChart();
+        }
+
+        function addRow() {
+            let table = document.getElementById("dataTable");
+            let row = table.insertRow();
+            row.classList.add("data-row");
+
+            let labelCell = row.insertCell(0);
+            let valueCell = row.insertCell(1);
+            let removeCell = row.insertCell(2);
+
+            labelCell.innerHTML = `<input type="text" class="form-control label" oninput="updateData()">`;
+            valueCell.innerHTML = `<input type="number" class="form-control value" oninput="updateData()">`;
+            removeCell.innerHTML = `<button class="btn btn-danger" onclick="removeRow(this)">Remove</button>`;
+        }
+
+        function removeRow(button) {
+            button.parentElement.parentElement.remove();
+            updateData();
+        }
+
+        function downloadChart() {
+            let chartElement = document.getElementById("chart_div").getElementsByTagName("svg")[0];
+            let svgData = new XMLSerializer().serializeToString(chartElement);
+            let canvas = document.createElement("canvas");
+            let ctx = canvas.getContext("2d");
+
+            let img = new Image();
+            img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                let link = document.createElement("a");
+                link.href = canvas.toDataURL("image/png");
+                link.download = "chart.png";
+                link.click();
+            };
+        }
+    </script>
+</head>
+<body class="container py-4">
+
+<br/>
+    <h1 class="text-center mb-4 mt-5">Free 3D Pie Chart Generator | Editable Online Graph Maker Tool</h1>
+    <p class="lead text-center mt-3">
+    Build eye-catching 3D pie charts online with ease. Our free editable 3D chart tool lets you enter values, update live, and visualize your data in a dynamic, presentation-ready format—no sign-up, no software required.
+    </p>
+
+    <div class="row">
+    <div class="col-12 col-md-6">
+    <div class="mb-3">
+        <label class="form-label"><strong>Chart Title:</strong></label>
+        <input type="text" id="chartTitle" class="form-control" value="Indian Language Use" oninput="drawChart()">
+    </div>
+
+    <table class="table table-bordered" id="dataTable">
+        <thead>
+            <tr>
+                <th>Language</th>
+                <th>Speakers (in millions)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="data-row">
+                <td><input type="text" class="form-control label" value="Hindi" oninput="updateData()"></td>
+                <td><input type="number" class="form-control value" value="500" oninput="updateData()"></td>
+                <td><button class="btn btn-danger" onclick="removeRow(this)">Remove</button></td>
+            </tr>
+            <tr class="data-row">
+                <td><input type="text" class="form-control label" value="Bengali" oninput="updateData()"></td>
+                <td><input type="number" class="form-control value" value="200" oninput="updateData()"></td>
+                <td><button class="btn btn-danger" onclick="removeRow(this)">Remove</button></td>
+            </tr>
+            <tr class="data-row">
+                <td><input type="text" class="form-control label" value="Telugu" oninput="updateData()"></td>
+                <td><input type="number" class="form-control value" value="150" oninput="updateData()"></td>
+                <td><button class="btn btn-danger" onclick="removeRow(this)">Remove</button></td>
+            </tr>
+            <tr class="data-row">
+                <td><input type="text" class="form-control label" value="Marathi" oninput="updateData()"></td>
+                <td><input type="number" class="form-control value" value="120" oninput="updateData()"></td>
+                <td><button class="btn btn-danger" onclick="removeRow(this)">Remove</button></td>
+            </tr>
+            <tr class="data-row">
+                <td><input type="text" class="form-control label" value="Tamil" oninput="updateData()"></td>
+                <td><input type="number" class="form-control value" value="100" oninput="updateData()"></td>
+                <td><button class="btn btn-danger" onclick="removeRow(this)">Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary mb-3" onclick="addRow()">Add Row</button>
+
+    </div>
+  <div class="col-12 col-md-6">
+
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
+    <button class="btn btn-success mt-3" onclick="downloadChart()">Download Chart</button>
+
+    </div>
+    </div>
+
+
+
+
+    <div class="container mt-5">
+  <h2 class="text-center mb-4">How to Create a 3D Pie Chart Online</h2>
+  <p class="text-center">
+    This editable 3D pie chart generator helps you visually break down data by category. It's ideal for business reporting, education, marketing, and infographics. Just follow the steps below.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Step #1: Input Your Data</h4>
+      <p>Enter your data directly into the table. Each row represents a slice of your 3D pie chart. You can rename labels and change values at any time.</p>
+
+      <h4>Step #2: Add or Remove Categories</h4>
+      <p>Click <strong>Add Row</strong> to insert a new category or use the red <strong>Remove</strong> button to delete one. The chart updates live as you edit.</p>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Step #3: Customize the Title</h4>
+      <p>Set your chart title for better context and clarity. The title appears above the chart and can reflect any topic you want to visualize.</p>
+
+      <h4>Step #4: Export or Screenshot</h4>
+      <p>Once your 3D pie chart is ready, you can export it using browser tools or take a quick screenshot. It's perfect for slides, reports, and digital publications.</p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Why Choose Our 3D Pie Chart Tool?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">🥧 Generate interactive 3D pie charts in seconds</li>
+    <li class="list-group-item">✏️ Fully editable data input fields</li>
+    <li class="list-group-item">💡 No sign-up, no watermark, 100% free</li>
+    <li class="list-group-item">📱 Mobile responsive and easy to use</li>
+    <li class="list-group-item">📊 Great for data storytelling and presentations</li>
+  </ul>
+
+  <p>
+    Whether you're comparing market share, survey responses, or language use (like in the example above), our free 3D pie chart generator makes it fast and simple to create powerful data visuals.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/3d-pie-chart-generator" class="btn btn-danger btn-lg">Try the 3D Pie Chart Tool Now</a>
+  </p>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

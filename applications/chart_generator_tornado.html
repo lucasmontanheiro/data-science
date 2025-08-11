@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free Tornado Chart Generator | Compare Group Data Side-by-Side</title>
+  <meta name="description" content="Visualize comparisons between two groups—like male vs female or region A vs B—using our free editable tornado chart tool. Input your categories and values to build a clean, horizontal bar chart.">
+  <meta name="keywords" content="tornado chart generator, population pyramid chart, group comparison graph, side-by-side bar chart, editable tornado chart online, free comparison chart tool">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/chart_generator_tornado">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Editable Tornado Chart Generator - Free Online Tool">
+  <meta property="og:description" content="Compare two groups across multiple categories using a clear tornado-style bar chart. Input your data and get a professional visual instantly.">
+  <meta property="og:url" content="https://quickfreewebtools.com/chart_generator_tornado">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/tornado-chart-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Tornado Chart Generator">
+  <meta name="twitter:description" content="Easily compare male/female data or two populations across categories. No account needed. Try our free editable tornado chart tool now.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/tornado-chart-preview.png">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            let title = document.getElementById('chartTitle').value || 'Tornado Chart Example';
+            let data = google.visualization.arrayToDataTable([
+                ['Category', 'Male', 'Female'],
+                [document.getElementById('cat1').value, parseInt(document.getElementById('male1').value), -parseInt(document.getElementById('female1').value)],
+                [document.getElementById('cat2').value, parseInt(document.getElementById('male2').value), -parseInt(document.getElementById('female2').value)],
+                [document.getElementById('cat3').value, parseInt(document.getElementById('male3').value), -parseInt(document.getElementById('female3').value)],
+                [document.getElementById('cat4').value, parseInt(document.getElementById('male4').value), -parseInt(document.getElementById('female4').value)],
+                [document.getElementById('cat5').value, parseInt(document.getElementById('male5').value), -parseInt(document.getElementById('female5').value)],
+            ]);
+
+            let options = {
+                title: title,
+                hAxis: {title: 'Population', minValue: -15000, maxValue: 15000, format: 'short'},
+                vAxis: {title: 'Categories'},
+                bars: 'horizontal',
+                colors: ['#007bff', '#74c476'],
+                legend: {position: 'right'},
+                isStacked: true
+            };
+
+            let chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body class="container py-4">
+
+<br/>
+    <h2 class="mb-3 mt-5">Free Tornado Chart Generator | Compare Group Data Side-by-Side</h2>
+    <p class="lead text-center mt-3">
+  Create editable tornado charts online to compare two groups across multiple categories. Use this free chart tool to visualize population pyramids, demographic splits, or side-by-side comparisons in a clear and engaging format.
+</p>
+
+
+    <div class="row">
+    <div class="col-12 col-md-6">
+
+    <div class="mb-3">
+        <label class="form-label">Chart Title:</label>
+        <input type="text" id="chartTitle" class="form-control" oninput="drawChart()" value="Tornado Chart Example">
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label">Category 1:</label>
+            <input type="text" id="cat1" class="form-control" value="Category A" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Male Population:</label>
+            <input type="number" id="male1" class="form-control" value="7500" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Female Population:</label>
+            <input type="number" id="female1" class="form-control" value="8200" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Category 2:</label>
+            <input type="text" id="cat2" class="form-control" value="Category B" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Male Population:</label>
+            <input type="number" id="male2" class="form-control" value="6000" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Female Population:</label>
+            <input type="number" id="female2" class="form-control" value="6500" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Category 3:</label>
+            <input type="text" id="cat3" class="form-control" value="Category C" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Male Population:</label>
+            <input type="number" id="male3" class="form-control" value="4000" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Female Population:</label>
+            <input type="number" id="female3" class="form-control" value="4200" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Category 4:</label>
+            <input type="text" id="cat4" class="form-control" value="Category D" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Male Population:</label>
+            <input type="number" id="male4" class="form-control" value="2500" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Female Population:</label>
+            <input type="number" id="female4" class="form-control" value="2800" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Category 5:</label>
+            <input type="text" id="cat5" class="form-control" value="Category E" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Male Population:</label>
+            <input type="number" id="male5" class="form-control" value="1500" oninput="drawChart()">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Female Population:</label>
+            <input type="number" id="female5" class="form-control" value="1800" oninput="drawChart()">
+        </div>
+    </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div id="chart_div" style="width: 100%; height: 500px;"></div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+  <h2 class="text-center mb-4">How to Use the Editable Tornado Chart Generator</h2>
+  <p class="lead text-center">
+    Tornado charts (also known as population pyramids or diverging bar charts) are great for visualizing two datasets side-by-side. This tool helps you build them instantly—no coding or spreadsheet required.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Step #1: Add Categories</h4>
+      <p>Start by entering each category—such as age groups, regions, product types, or other segment labels—into the left-hand input fields.</p>
+
+      <h4>Step #2: Input Group Values</h4>
+      <p>For each category, enter the values for the two groups you want to compare (e.g., Male and Female, Group A and Group B, Before and After).</p>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Step #3: Chart Updates Instantly</h4>
+      <p>The tornado chart updates automatically as you input data. Bars extend in opposite directions from a central vertical axis, giving you a visual split comparison.</p>
+
+      <h4>Step #4: Download or Screenshot</h4>
+      <p>Once your chart looks right, screenshot or export it for use in reports, dashboards, or presentations. No watermark, no sign-up, no cost.</p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Why Use This Tornado Chart Tool?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">🧍‍♂️🧍‍♀️ Perfect for comparing two groups side-by-side</li>
+    <li class="list-group-item">📊 Ideal for demographics, surveys, and population studies</li>
+    <li class="list-group-item">⚡ Real-time updates as you type</li>
+    <li class="list-group-item">🆓 100% free and browser-based</li>
+    <li class="list-group-item">📈 No watermark or account needed</li>
+  </ul>
+
+  <p>
+    Whether you're comparing male and female populations, two branches of a business, or survey results split by group, this tornado chart generator gives you fast, clear visuals to support your data storytelling.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/chart_generator_tornado" class="btn btn-primary btn-lg">Create Your Tornado Chart Now</a>
+  </p>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

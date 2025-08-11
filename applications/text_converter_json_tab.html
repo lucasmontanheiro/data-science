@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free JSON to TSV Converter | Convert JSON ↔ Tab-Separated Values Instantly</title>
+  <meta name="description" content="Convert structured JSON data to TSV format or convert tab-separated text to JSON online. Fast, free, and no login needed.">
+  <meta name="keywords" content="JSON to TSV, TSV to JSON, convert JSON to tab, convert tab to JSON, JSON table converter, tab-separated values to JSON, json parser, data format converter, free TSV JSON converter online">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfreewebtools.com/text_converter_json_tab">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free JSON ↔ Tab Converter - Online Format Conversion">
+  <meta property="og:description" content="Easily switch between JSON and tab-separated formats with this free converter. Developers, analysts, and spreadsheet users love this tool.">
+  <meta property="og:url" content="https://quickfreewebtools.com/text_converter_json_tab">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://quickfreewebtools.com/assets/json-tab-converter-preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free JSON to Tab Converter Online">
+  <meta name="twitter:description" content="Convert JSON to TSV or TSV to JSON instantly. Copy/paste your data and convert it in one click.">
+  <meta name="twitter:image" content="https://quickfreewebtools.com/assets/json-tab-converter-preview.png">
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for mobile-first design */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        textarea {
+            resize: none;
+        }
+        .btn-container {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<br/>
+    <div class="container">
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <h1 class="h3 mt-5">Free JSON to TSV Converter | Convert JSON ↔ Tab-Separated Values Instantly</h1>
+            <p class="lead text-center mt-3">
+  Convert between JSON and TSV (Tab-Separated Values) quickly and easily. This free online tool transforms structured JSON data into flat tabular format—or reverses it—without writing a line of code.
+</p>
+
+        </div>
+
+
+
+
+<div class="row">
+  <div class="col-12 col-md-6">
+        <!-- Input Section -->
+        <div class="mb-3">
+            <label for="inputData" class="form-label">Input Data</label>
+            <textarea id="inputData" class="form-control" rows="8" placeholder="Enter JSON or TSV here..."></textarea>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="btn-container text-center">
+            <button id="convertToTab" class="btn btn-primary">Convert to Tab</button>
+            <button id="convertToJSON" class="btn btn-secondary">Convert to JSON</button>
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+
+        <!-- Output Section -->
+        <div class="mt-4">
+            <label for="outputData" class="form-label">Output Data</label>
+            <textarea id="outputData" class="form-control" rows="8" readonly placeholder="Converted data will appear here..."></textarea>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">How to Use the JSON ↔ Tab Converter</h2>
+  <p class="lead text-center">
+    This free conversion tool helps you reformat data for APIs, spreadsheets, or backend systems by converting between hierarchical JSON and flat tab-separated (TSV) data formats.
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Step #1: Paste Your Data</h4>
+      <p>You can paste either:</p>
+      <ul>
+        <li>📦 A valid JSON array or object</li>
+        <li>📄 A block of tab-separated text (TSV format)</li>
+      </ul>
+
+      <h4>Step #2: Click a Conversion Option</h4>
+      <p>Choose the conversion direction:
+        <ul>
+          <li><strong>Convert to Tab</strong> – JSON → TSV</li>
+          <li><strong>Convert to JSON</strong> – TSV → JSON</li>
+        </ul>
+      </p>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Step #3: Use the Output Anywhere</h4>
+      <p>The converted data appears instantly on the right. You can now:</p>
+      <ul>
+        <li>📋 Copy the output to your clipboard</li>
+        <li>🧾 Use in spreadsheets, scripts, or APIs</li>
+        <li>📥 Save the data for importing/exporting</li>
+      </ul>
+
+      <h4>Perfect For:</h4>
+      <ul>
+        <li>👨‍💻 Developers formatting config/data</li>
+        <li>📊 Analysts working with TSV/CSV data</li>
+        <li>🧰 Debugging JSON structure with table view</li>
+        <li>🗂 Data migration and bulk processing</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Why Use This Free JSON-TSV Converter?</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">🚀 Instant conversion with no setup or code</li>
+    <li class="list-group-item">🧠 Supports nested JSON array formatting</li>
+    <li class="list-group-item">📄 Converts large data blocks with ease</li>
+    <li class="list-group-item">🆓 100% free, browser-based, and private</li>
+  </ul>
+
+  <p>
+    This tool is ideal for developers, analysts, or anyone working with JSON and flat-file systems. Quickly switch between readable, hierarchical, and spreadsheet-ready data formats with a click.
+  </p>
+
+  <p class="text-center mt-4">
+    <a href="/text_converter_json_tab" class="btn btn-success btn-lg">Convert JSON or TSV Now</a>
+  </p>
+</div>
+
+
+    <!-- JavaScript -->
+    <script>
+        // Elements
+        const inputData = document.getElementById("inputData");
+        const outputData = document.getElementById("outputData");
+        const convertToTab = document.getElementById("convertToTab");
+        const convertToJSON = document.getElementById("convertToJSON");
+
+        /**
+         * Converts JSON to tab-separated values (TSV).
+         * @param {string} json - JSON string input.
+         * @returns {string} - Tab-separated string output.
+         */
+        function jsonToTab(json) {
+            try {
+                const jsonObject = JSON.parse(json); // Parse JSON input
+                const keys = Object.keys(jsonObject[0]); // Get column headers
+                const rows = jsonObject.map(obj => keys.map(key => obj[key] || "").join("\t")); // Map each object to a row
+                return [keys.join("\t"), ...rows].join("\n"); // Combine headers and rows
+            } catch (error) {
+                return `Error: Invalid JSON input. ${error.message}`;
+            }
+        }
+
+        /**
+         * Converts tab-separated values (TSV) to JSON.
+         * @param {string} tab - Tab-separated string input.
+         * @returns {string} - JSON string output.
+         */
+        function tabToJson(tab) {
+            try {
+                const rows = tab.split("\n"); // Split input into rows
+                const keys = rows[0].split("\t"); // Extract column headers
+                const json = rows.slice(1).map(row => {
+                    const values = row.split("\t"); // Split row into values
+                    return keys.reduce((obj, key, index) => {
+                        obj[key] = values[index] || ""; // Map keys to values
+                        return obj;
+                    }, {});
+                });
+                return JSON.stringify(json, null, 2); // Pretty-print JSON
+            } catch (error) {
+                return `Error: Invalid TSV input. ${error.message}`;
+            }
+        }
+
+        // Event Listeners for Buttons
+        convertToTab.addEventListener("click", () => {
+            const jsonInput = inputData.value;
+            const tabOutput = jsonToTab(jsonInput);
+            outputData.value = tabOutput; // Display converted TSV
+        });
+
+        convertToJSON.addEventListener("click", () => {
+            const tabInput = inputData.value;
+            const jsonOutput = tabToJson(tabInput);
+            outputData.value = jsonOutput; // Display converted JSON
+        });
+    </script>
+</body>
+</html>

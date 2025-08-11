@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Free Dynamic Sankey Chart Generator | Create & Edit Online - Quick Free Web Tools</title>
+    <meta name="description" content="Create interactive Sankey charts dynamically with our free online tool. Modify data flow, edit nodes, and visualize relationships instantly. No coding required!">
+    <meta name="keywords" content="Sankey chart generator, Sankey diagram, flow chart tool, data visualization, interactive Sankey chart, free online chart tool, quick web tools, create Sankey charts">
+    <meta name="author" content="Quick Free Web Tools">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (OG) Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Free Dynamic Sankey Chart Generator | Quick Free Web Tools">
+    <meta property="og:description" content="Easily create, edit, and customize interactive Sankey charts online. Modify flow data and visualize relationships instantly. Try it for free!">
+    <meta property="og:url" content="https://quickfreewebtools.com/chart_generator_sankey">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://quickfreewebtools.com/assets/sankey-chart-preview.png">
+
+    <!-- Twitter Card for Social Sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Dynamic Sankey Chart Generator - Quick Free Web Tools">
+    <meta name="twitter:description" content="Modify and generate Sankey charts online. Customize flow relationships dynamically and visualize data instantly with this free tool.">
+    <meta name="twitter:image" content="https://quickfreewebtools.com/assets/sankey-chart-preview.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://quickfreewebtools.com/chart_generator_sankey">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://quickfreewebtools.com/favicon.ico">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Dynamic Sankey Chart Generator",
+        "image": "https://quickfreewebtools.com/assets/sankey-chart-preview.png",
+        "url": "https://quickfreewebtools.com/chart_generator_sankey",
+        "author": {
+            "@type": "Organization",
+            "name": "Quick Free Web Tools"
+        },
+        "description": "An online tool to create and modify Sankey charts dynamically. No coding required!",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "All"
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 900px;
+            margin-top: 20px;
+        }
+        .chart-container {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <script>
+        google.charts.load("current", {packages:["sankey"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'From');
+            data.addColumn('string', 'To');
+            data.addColumn('number', 'Weight');
+
+            let rows = document.querySelectorAll('.data-row');
+            let sankeyData = [];
+
+            rows.forEach(row => {
+                let from = row.querySelector('.from').value;
+                let to = row.querySelector('.to').value;
+                let value = parseInt(row.querySelector('.value').value) || 0;
+                if (from && to && value > 0) {
+                    sankeyData.push([from, to, value]);
+                }
+            });
+
+            data.addRows(sankeyData);
+
+            var chart = new google.visualization.Sankey(document.getElementById('sankey_chart'));
+            chart.draw(data, {
+                width: 750,
+                height: 400,
+                sankey: {link: {color: {fill: '#007bff', fillOpacity: 0.4}}}
+            });
+        }
+
+        function updateChart() {
+            drawChart();
+        }
+
+        function addRow() {
+            let container = document.getElementById("dataRows");
+            let rowCount = container.childElementCount + 1;
+
+            let row = document.createElement("div");
+            row.classList.add("row", "g-3", "data-row");
+            row.innerHTML = `
+                <div class='col-md-3'>
+                    <input type='text' class='form-control from' placeholder='From' oninput='updateChart()'>
+                </div>
+                <div class='col-md-3'>
+                    <input type='text' class='form-control to' placeholder='To' oninput='updateChart()'>
+                </div>
+                <div class='col-md-3'>
+                    <input type='number' class='form-control value' placeholder='Value' min='1' oninput='updateChart()'>
+                </div>
+                <div class='col-md-3'>
+                    <button type='button' class='btn btn-danger' onclick='removeRow(this)'>Remove</button>
+                </div>
+            `;
+            container.appendChild(row);
+            updateChart();
+        }
+
+        function removeRow(button) {
+            button.parentElement.parentElement.remove();
+            updateChart();
+        }
+    </script>
+</head>
+<body>
+
+<br/>
+<div class="container">
+    <h1 class="text-center mt-5">Dynamic Sankey Chart Generator</h1>
+    <p class="text-center">Create Interactive Sankey Diagrams Online – Edit, Customize & Visualize Data Instantly.</p>
+
+
+
+    <div class="row">
+    <div class="col-12 col-md-6">
+
+    <div class="chart-container">
+        <div id="sankey_chart" style="width: 100%; height: 400px;"></div>
+    </div>
+    </div>
+    <div class="col-12 col-md-6">
+
+    <h4 class="mt-4">Edit Data</h4>
+    <div id="dataRows">
+        <div class="row g-3 data-row">
+            <div class="col-md-3">
+                <input type="text" class="form-control from" value="A" oninput="updateChart()">
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control to" value="X" oninput="updateChart()">
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control value" value="10" min="1" oninput="updateChart()">
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button>
+            </div>
+        </div>
+        <div class="row g-3 data-row">
+            <div class="col-md-3">
+                <input type="text" class="form-control from" value="B" oninput="updateChart()">
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control to" value="Y" oninput="updateChart()">
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control value" value="15" min="1" oninput="updateChart()">
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary mt-3" onclick="addRow()">Add Row</button>
+</div>
+    </div>
+
+<section class="container mt-5">
+    <h2 class="text-center mb-4">Understanding Sankey Charts: Importance & Use Cases</h2>
+    
+    <div class="card shadow-sm border-0 p-4">
+        <h3 class="mb-3">📌 What is a Sankey Chart?</h3>
+        <p>
+            A <strong>Sankey Chart</strong> is a specialized flow diagram that visually represents the movement of quantities between different entities.
+            The width of each connection (or "link") is proportional to the quantity it represents, making it an effective tool for understanding distributions, processes, and inefficiencies in a system.
+        </p>
+        <p>
+            Originally developed for energy efficiency analysis, Sankey diagrams are now widely used across industries for **data visualization** to help users 
+            <strong>track flow, identify bottlenecks, and optimize processes.</strong>
+        </p>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-4 h-100">
+                <h3 class="mb-3">🔥 Why Are Sankey Charts Important?</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">✅ <strong>Clear Representation of Flow</strong> – Helps visualize movement between stages.</li>
+                    <li class="list-group-item">✅ <strong>Proportional Relationships</strong> – Link widths reflect quantity, making insights clear.</li>
+                    <li class="list-group-item">✅ <strong>Data-Driven Insights</strong> – Identify inefficiencies and optimization opportunities.</li>
+                    <li class="list-group-item">✅ <strong>Intuitive & User-Friendly</strong> – Easily understandable, even for non-experts.</li>
+                    <li class="list-group-item">✅ <strong>Customizable & Interactive</strong> – Modify, edit, and explore different scenarios dynamically.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-4 h-100">
+                <h3 class="mb-3">🌍 Common Use Cases</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">📊 <strong>Business & Finance</strong> – Cash flow analysis, customer journey mapping, and market share distribution.</li>
+                    <li class="list-group-item">🔬 <strong>Energy & Sustainability</strong> – Track energy flows, carbon footprint, and water waste management.</li>
+                    <li class="list-group-item">🏭 <strong>Supply Chain & Logistics</strong> – Optimize product distribution and transportation efficiency.</li>
+                    <li class="list-group-item">🎓 <strong>Education & Research</strong> – Use in data science, academic studies, and election analysis.</li>
+                    <li class="list-group-item">🏥 <strong>Healthcare & Public Policy</strong> – Visualize patient flow, treatment paths, and budget allocation.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0 p-4 mt-4">
+        <h3 class="mb-3 text-center">🚀 Why Use a Sankey Chart Generator?</h3>
+        <p>
+            Creating a Sankey diagram manually is time-consuming. A **Dynamic Sankey Chart Generator** allows users to **input, modify, and visualize flows instantly**. 
+            This makes it an essential tool for **data analysts, business leaders, researchers, and engineers** who need to present complex relationships in a visually compelling way.
+        </p>
+        <p class="text-center">
+            <a href="https://quickfreewebtools.com/chart_generator_sankey" class="btn btn-primary btn-lg">
+                Try the Dynamic Sankey Chart Generator Now! 🚀
+            </a>
+        </p>
+    </div>
+</section>
+
+<!-- Bootstrap 5 Styling -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
